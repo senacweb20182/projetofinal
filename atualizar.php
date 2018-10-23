@@ -1,26 +1,39 @@
 <?php 
      
     include 'cabecalho.php';
-    
-?>
+    if(isset($_SESSION['prod'])) {
+        $prod = $_SESSION['prod'];
+        
+    } else {
+        $_SESSION['msg'] = false;
+        header:("Location: consulta.php");        
+    }
+    ?>
     <section>
         <div class="container">
             <div class="row">
                 <div class="jumbotron" align="center">
-                    <p>Página Index</p>
-                   
+                    <p>Página Index
+                                          
                 </div>
             </div>
             <section>
         <div class="container">
             <div class="row col-xs-6 col-xs-offset-3">
                 <fieldset>
-                    <legend>Registro de Produto</legend>
-                    <form action="registra.php" method="post">
+                    <legend>Atualização de Produto</legend>
+                    <form action="update.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
+                            <div class="col-xs-2"
+                            <label for="id">ID</label>
+                            <input type="number" class="form-control" 
+                            name="id" id="quant" value="<?= $prod['id'] ?>" required>
+                            </div>
+                            <div class="col-xs-10">
                             <label for="prod">Nome do produto</label>
                             <input type="text" class="form-control" 
                             name="prod" id="prod" value="<?= $prod['produto'] ?>" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="foto">Foto do produto</label>
@@ -51,23 +64,8 @@
                             <textarea id="rev" name="rev" rows="5" maxlength="150" cols="50"><?= $prod['review'] ?></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-info">Salvar</button>
-                            <?php
-                                if(isset($_SESSION['msg'])) { 
-                                    if($_SESSION['msg']) {
-                                        
-                            ?>
-                            <p class="pull-right text-success">Dados gravados com sucesso</p>
-                            <?php
-                                    } else {
-                            ?>
-                            <p class="pull-right text-danger">Erro ao gravar</p>
-                            <?php
-                                    }
-                                }
-                                # removem a sessão
-                                unset($_SESSION['msg']);
-                            ?>
+                            <button type="submit" class="btn btn-info">Atualizar</button>
+                            
                         </div>
                     </form>
                 </fieldset>
