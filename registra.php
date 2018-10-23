@@ -21,6 +21,7 @@
         if($file['error']) {
             //throw new Exception('Error: ' . $file['error']);
             $_SESSION['msg'] = false;
+            
             exit;
         }
         
@@ -40,7 +41,7 @@
             exit;
         }
         
-        $foto=$file['foto']['name'];
+        $foto=$file['name'];
    
         
         if (salvar($prod, $foto, $quant, $price, $custo, $desc, $rev)){
