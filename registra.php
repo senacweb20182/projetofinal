@@ -1,12 +1,11 @@
 <?php
     require_once 'crud.php';
     # inicia a sessão no arquivo
-    session_start();
 
     if($_POST) {
 
         $prod = filter_input(INPUT_POST, "prod", FILTER_SANITIZE_STRING);
-        $file = $_FILES['foto'];
+        $file = $_FILES['fileUpload'];
         $desc = filter_input(INPUT_POST, "desc", FILTER_SANITIZE_STRING);
         $rev = filter_input(INPUT_POST, "rev", FILTER_SANITIZE_STRING);
         $price = filter_input(INPUT_POST, "price", FILTER_SANITIZE_NUMBER_INT);

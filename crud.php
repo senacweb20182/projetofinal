@@ -60,4 +60,15 @@
                 
                 return false;
                 
-            }  
+    } 
+
+    function efetuarLogin($login, $senha){
+        $link = abreConexao();
+
+        $query = "select nome from tb_admins where login = '$login' and senha = '$senha'";
+        $result = mysqli_query($link, $query);
+        
+        $result = mysqli_fetch_assoc($result);
+        
+        return $result;
+    }

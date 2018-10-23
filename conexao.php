@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     function abreConexao() {
         $link = mysqli_connect("localhost", "root", "" , "projeto", "3306");

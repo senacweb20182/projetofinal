@@ -1,7 +1,6 @@
 <?php
     require_once 'crud.php';
     # inicia a sessão no arquivo
-    session_start();
 
         if($_POST) {
 

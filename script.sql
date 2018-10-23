@@ -8,3 +8,10 @@ create table tb_produtos(
     descricao varchar(150) not null,
     review varchar(150) not null
 );
+
+create table tb_admins(
+    id int primary key auto_increment,
+    nome varchar(20) not null,
+    login varchar(20) not null,
+    senha varchar(100) not null
+);

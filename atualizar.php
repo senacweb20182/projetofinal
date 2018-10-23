@@ -42,7 +42,7 @@
                         <div class="form-group col-xs-6">
                             <label for="id_fileUpload">Foto do produto</label>
                             <input type="file" class="form-control" 
-                            name="foto" id='id_fileUpload' value="<?= $prod['foto'] ?>" required>
+                            name="foto" id='id_fileUpload' value="<?= $prod['foto'] ?>">
                         </div>
                             <div class="col-xs-6">
 			                <figure>
