@@ -1,4 +1,0 @@
-Release Notes for Simple Ecommerce Theme for Bootstrap 4
------------------------------------
-# v1.0.0 - (2018-01-18)
-- First Commit
