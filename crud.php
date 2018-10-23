@@ -17,7 +17,24 @@
         $link = abreConexao();
 
         
-        $query = "select * from tb_produtos where produto like '$prod'";
+        $query = "select * from tb_produtos where produto like '%$prod%'";
+
+        $result = mysqli_query($link, $query);
+
+        $arrayProduto = array();
+
+        while($produto = mysqli_fetch_row($result)) {
+            array_push($arrayProduto, $produto);
+        }
+       
+        return $arrayProduto;
+    }   
+
+    function buscarId($id) {
+        $link = abreConexao();
+
+        
+        $query = "select * from tb_produtos where id = $id";
 
         $result = mysqli_query($link, $query);
 
@@ -26,6 +43,8 @@
         }
         return mysqli_fetch_assoc($result);
     }
+    
+    
     
     function atualizar($prod, $foto, $quant, $price, $custo, $desc, $rev, $id) {
         $link = abreConexao();

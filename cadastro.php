@@ -8,8 +8,12 @@
             <div class="row">
                 <div class="jumbotron" align="center">
                     <p>Página Index</p>
-                   
+                    <nav class="navbar-light bg-light ">
+                    <a class="navbar-brand" href='cadastro.php'>Cadastro</a>
+                    <a class="navbar-brand" href='consulta.php'>Busca e Atualização</a>
+                </nav>
                 </div>
+                
             </div>
             <section>
         <div class="container">
@@ -24,7 +28,7 @@
                         </div>
                         <div class="form-group col-xs-6">
                         <label class='src-only' for='id_fileUpload'>Arquivo</label>
-						<input type='file' class='form-control' name='foto' id='id_fileUpload'>
+						<input type='file' class='form-control' name='fileUpload' id='id_fileUpload'>
                         </div>
                         <div class="col-xs-6">
 			                <figure>

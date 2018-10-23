@@ -1,8 +1,9 @@
 <?php 
      
     include 'cabecalho.php';
-    if(isset($_SESSION['prod'])) {
-        $prod = $_SESSION['prod'];
+    if(isset($_SESSION['id'])) {
+        $prod = $_SESSION['id'];
+
         
     } else {
         $_SESSION['msg'] = false;
@@ -13,8 +14,11 @@
         <div class="container">
             <div class="row">
                 <div class="jumbotron" align="center">
-                    <p>Página Index
-                                          
+                    <p>Página Administrativa
+                    <nav class="navbar-light bg-light ">
+                    <a class="navbar-brand" href='cadastro.php'>Cadastro</a>
+                    <a class="navbar-brand" href='consulta.php'>Busca e Atualização</a>
+                </nav>           
                 </div>
             </div>
             <section>
@@ -33,14 +37,19 @@
                             <label for="prod">Nome do produto</label>
                             <input type="text" class="form-control" 
                             name="prod" id="prod" value="<?= $prod['produto'] ?>" required>
-                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="foto">Foto do produto</label>
-                            <input type="text" class="form-control" 
-                            namw="foto" id="foto" value="<?= $prod['foto'] ?>" required>
+                        
+                        <div class="form-group col-xs-6">
+                            <label for="id_fileUpload">Foto do produto</label>
+                            <input type="file" class="form-control" 
+                            name="foto" id='id_fileUpload' value="<?= $prod['foto'] ?>" required>
                         </div>
-                        <div class="form-group col-xs-4">
+                            <div class="col-xs-6">
+			                <figure>
+				                <img class="img-thumbnail" id='previewImg' alt="200x200" src=<?="'uploads/".$prod['foto']."'"; ?>  data-holder-rendered="true" style="width: 200px; height:200px;">
+			                </figure>
+                        </div>
+		                <div class="form-group col-xs-4">
                             <label for="quant">Quantidade</label>
                             <input type="number" class="form-control" 
                             name="quant" id="quant" value="<?= $prod['quantidade'] ?>" required>

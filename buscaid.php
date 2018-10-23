@@ -3,16 +3,16 @@
     # inicia a sessão no arquivo
     session_start();
 
-        if($_SERVER['REQUEST_METHOD'] === "POST") {
+        if($_POST) {
 
-        $prod = filter_input(INPUT_POST, "prod", FILTER_SANITIZE_STRING);
+        $id = $_GET['id'];
         
-
-        if(buscar($prod)) {
+           
+        if(buscarId($id)) {
             // cria a sessão e define valor a ela
-            $_SESSION['prod'] = buscar($prod);
-            $_SESSION['msg'] = true;
-            header("location:consulta.php");
+            $_SESSION['id'] = buscarId($id);
+            
+            header("location:atualizar.php");
             exit;
         } else {
             $_SESSION['msg'] = false;
