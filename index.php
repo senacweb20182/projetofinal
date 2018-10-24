@@ -11,6 +11,15 @@
     <title>Upload de arquivo com PHP</title>
   </head>
   <body>
+	<div class="row">
+                <div class="jumbotron" align="center">
+                    <p>Página Administrativa
+                    <nav class="navbar-light bg-light ">
+                    <a class="navbar-brand" href='cadastro.php'>Cadastro</a>
+                    <a class="navbar-brand" href='consulta.php'>Busca e Atualização</a>
+                </nav>           
+                </div>
+            </div>
     <div class='container col-6 offset-3'>
 		<div class='row'>
 			<fieldset>
