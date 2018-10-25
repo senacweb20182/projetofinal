@@ -114,8 +114,61 @@ function validarData($data){ //aceita qualquer data valida entre 1900 e o dia de
     return false;  
 }
 
-//função para validar o cpf não só ira verificar se o formato é valido mas se o digito verificador é valido
+function validarCpf(&$cpf){
+    preg_match_all('/^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/m', $cpf, $matches, PREG_SET_ORDER, 0);
+    if($matches){
+        $cpf = preg_replace('(\.|\-)', '', $cpf);
+    }
+    $codigo = substr($cpf, 0, 9);
+    $k = 10; $sum = 0;
+    for($i = 0; $i<9;$i++){
+        $sum += $codigo[$i]*($k--);
+    }
+    $r = 11 - $sum%11;
+    if($r > 9){
+        $d1 = 0;
+    }
+    else{
+        $d1 = $r;
+    }
+    $codigo = $codigo.$d1;
+    $k = 11; $sum = 0;
+    for($i = 0; $i<10;$i++){
+        $sum += $codigo[$i]*($k--);
+    }
+    $r = 11 - $sum%11;
+    if($r > 9){
+        $d2 = 0;
+    }
+    else{
+        $d2 = $r;
+    }
+    $codigo = $codigo.$d2;
+    if($cpf != $codigo){
+        return false;
+    }
+    return $matches;
+}
 
-//função para validar ddd ira verificar se o ddd existe, opção de usar um json disponivel online
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://ddd.pricez.com.br/ddds");
+curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Accept:application/json' ));
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+$json_ddd = curl_exec($ch);
+$json_ddd = json_decode($json_ddd, 1);
+
+function validarDDD($ddd){
+	global $json_ddd;
+    preg_match_all('/^[1-9]{1}\d{1}$/m', $ddd, $matches, PREG_SET_ORDER, 0);
+    if($matches){
+        if(!in_array($ddd, $json_ddd['payload'])){
+            return false;
+        }
+    }
+    return $matches;
+}
 
 ?>
