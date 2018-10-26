@@ -1,21 +1,24 @@
-# Ecommerce Theme for Bootstrap 4
-Simple Ecommerce Theme for Bootstrap 4
+# Projeto Final
+Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Marechal Floriano
 
-Pages available : home, category, product, cart and contact
+# Link do Site
 
-## Version 1.0.0
-- First version
+<a href="#">Web Tecnologia</a>
 
-## Demo
-http://demo.t-php.fr/bootstrap-4-ecommerce/v1/
 
-## Preview
-![Screenshot 1](img/home.png)
-![Screenshot 2](img/product.png)
+# Equipes
 
-## Installation
+<table>
+  <thead>
+    <th>Front-end</th>
+    <th>Back-end</th>
+    <th>Banco de Dados e Segurança</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Diego, Hélio, Joyce, Shirley e Rayane</td>
+      <td>Daniel,Rafael e Vinicius</td>
+      <td>Daniel Coutinho e Luiz</td>
+    </tr>  
+      
 
-1. Download script
-2. Unzip the package
-3. Transfer on your server (local or online)
-4. It's finish !
