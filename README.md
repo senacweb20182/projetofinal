@@ -27,7 +27,7 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
     <td>
       <img src="https://avatars1.githubusercontent.com/u/42871365?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href https://github.com/joycekerry">Joyce</a>
+      <a href="https://github.com/joycekerry">Joyce</a>
       </sub>
     </td>
     <td>
