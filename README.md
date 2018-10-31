@@ -33,15 +33,15 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
     <td>
       <img src="https://avatars3.githubusercontent.com/u/42761103?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="#">Shirley</a>
+      <a href ="#">Rayane</a>
       </sub>
-    </td>
+    </td>                                        
     <td>
       <img src="https://avatars3.githubusercontent.com/u/42761103?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="#">Rayane</a>
+      <a href ="#">Shirley</a>
       </sub>
-    </td>
+    </td>    
   </tr>
  </table>
  
