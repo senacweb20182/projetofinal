@@ -19,9 +19,9 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
       </sub>
     </td>
     <td>
-      <img src="https://avatars1.githubusercontent.com/u/42871365?s=460&v=4" width="100px;"/><br />
+      <img src="https://avatars0.githubusercontent.com/u/42936822?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="#">Hélio</a>
+      <a href ="https://github.com/heliomagno">Hélio</a>
       </sub>
     </td>
     <td>
@@ -31,15 +31,15 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
       </sub>
     </td>
     <td>
-      <img src="https://avatars3.githubusercontent.com/u/42761103?s=460&v=4" width="100px;"/><br />
+      <img src="https://avatars1.githubusercontent.com/u/42871343?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="#">Rayane</a>
+      <a href ="https://github.com/unafror">Rayane</a>
       </sub>
     </td>                                        
     <td>
-      <img src="https://avatars3.githubusercontent.com/u/42761103?s=460&v=4" width="100px;"/><br />
+      <img src="https://avatars0.githubusercontent.com/u/42901022?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="#">Shirley</a>
+      <a href ="https://github.com/pontesshirley">Shirley</a>
       </sub>
     </td>    
   </tr>
@@ -75,9 +75,9 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
 <table align="center">
   <tr>
     <td>
-      <img src="https://avatars3.githubusercontent.com/u/42761103?s=460&v=4" width="100px;"/><br />
+      <img src="https://avatars2.githubusercontent.com/u/42935796?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="#">Daniel Coutinho</a>
+      <a href ="https://github.com/daniel3947">Daniel Coutinho</a>
       </sub>
     </td>
     <td>
