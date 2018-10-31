@@ -1,5 +1,5 @@
-<?php include 'cabecalho.php'; ?>
 <?php
+include 'cabecalho.php';
 if (isset($_SESSION['valorcli'])) {
     $registro = $_SESSION['valorcli'];
 } else {
@@ -14,6 +14,7 @@ if (isset($_SESSION['valorcli'])) {
     );
 }
 ?>
+
 <body class="bg-light">
     <div class="container">
         <div class="py-5 text-center">
@@ -167,7 +168,7 @@ if (isset($_SESSION['valorcli'])) {
                         </div>
                         <div class="mb-3 col-9">
                             <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento (opcional)">
+                            <input type="text" class="form-control" id="comp" name="comp" placeholder="Digite o complemento (opcional)">
                             <div class="invalid-feedback">
                                 Favor insira o Complemento.
                             </div>
@@ -196,6 +197,8 @@ if (isset($_SESSION['valorcli'])) {
                         unset($_SESSION['cond_cli']);
                     }
                     ?>
+
+
                     <div class="form-group">
                         <button class="col-sm-3 col-12 float-right btn btn-primary btn-lg" type="submit">Salvar</button>
                         <button class="col-sm-3 col-12 float-left btn btn-info btn-lg" type="reset">Limpar</button>
@@ -211,19 +214,52 @@ if (isset($_SESSION['valorcli'])) {
                             <p class="pull-right text-danger">Erro ao gravar</p>
                             <?php
                         }
-                         # removem a sessão
+                    }
+                    # removem a sessão
                     unset($_SESSION['msg']);
-                    }                   
                     ?>
                 </form>
             </div>
         </div>
-        <?php
-        unset($_SESSION['valorcli']);
-        unset($_SESSION['cond_cli']);
-        ?>
-    </div> 
-    <br>
-    <?php include 'rodape.php'; ?>
 
+
+<?php
+include 'rodape.php';
+unset($_SESSION['valorcli']);
+unset($_SESSION['cond_cli']);
+?>;
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/holder.min.js"></script>
+    <script>
+                                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                (function () {
+                                    'use strict';
+
+                                    window.addEventListener('load', function () {
+                                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                        var forms = document.getElementsByClassName('needs-validation');
+
+                                        // Loop over them and prevent submission
+                                        var validation = Array.prototype.filter.call(forms, function (form) {
+                                            form.addEventListener('submit', function (event) {
+                                                if (form.checkValidity() === false) {
+                                                    event.preventDefault();
+                                                    event.stopPropagation();
+                                                }
+                                                form.classList.add('was-validated');
+                                            }, false);
+                                        });
+                                    }, false);
+                                })();
+    </script>
+    <script src="js/cep.js"></script>
+</body>
 
