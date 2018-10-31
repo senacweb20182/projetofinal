@@ -21,25 +21,25 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
     <td>
       <img src="https://avatars0.githubusercontent.com/u/42936822?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="https://github.com/heliomagno">Hélio</a>
+      <a href ="https://github.com/heliomagno">Hélio Ribeiro</a>
       </sub>
     </td>
     <td>
       <img src="https://avatars1.githubusercontent.com/u/42871365?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href="https://github.com/joycekerry">Joyce</a>
+      <a href="https://github.com/joycekerry">Joyce Figueira</a>
       </sub>
     </td>
     <td>
       <img src="https://avatars1.githubusercontent.com/u/42871343?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="https://github.com/unafror">Rayane</a>
+      <a href ="https://github.com/unafror">Rayane Cunha</a>
       </sub>
     </td>                                        
     <td>
       <img src="https://avatars0.githubusercontent.com/u/42901022?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="https://github.com/pontesshirley">Shirley</a>
+      <a href ="https://github.com/pontesshirley">Shirley Pontes</a>
       </sub>
     </td>    
   </tr>
@@ -52,7 +52,7 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
     <td>
       <img src="https://avatars1.githubusercontent.com/u/13372979?s=460&v=4" width="100px;"/><br />
       <sub>
-      <a href ="https://github.com/rdinformaticario">Daniel</a>
+      <a href ="https://github.com/rdinformaticario">Daniel Oliveira</a>
       </sub>
     </td>
     <td>
