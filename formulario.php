@@ -1,4 +1,5 @@
 <<!doctype html>
+<?php include 'cabecalho.php'; ?>
 <html lang="pt-br">
   <head>
     <!-- Required meta tags -->

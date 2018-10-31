@@ -6,7 +6,16 @@
                         <h5>Central de Atendimento</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                         <p class="mb-0">
-                            Central de Atendimento Grande São Paulo (11) 3065-7200 Outras Localidades 0800-754-4000 Horário de atendimento das 8h às 20h, de segunda a sábado (exceto feriados)
+                            Central de Atendimento 
+                        </p> 
+                        <p class="mb-0">
+                            Rio de Janeiro
+                        </p> 
+                        <p class="mb-0">
+                            (11) 3065-7200 / 0800-754-4000
+                        </p> 
+                        <p class="mb-0">
+                            Horário de atendimento das 8h às 20h, de segunda a sábado (exceto feriados)
                         </p>
                     </div>
 

@@ -20,13 +20,8 @@
     <body class="bg-light">
 
         <div class="container">
-            <div class="py-5 text-center">
-                <img class="d-block mx-auto mb-4" src="?" alt="" width="72" height="72">
-                <h2>cc</h2>
-                <p class="lead">?</p>
-            </div>
-
-            <div class="row">
+                     
+            <div class="row mt-5">
                 <div class="col-md-4 order-md-2 mb-4">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Seu carrinho</span>
@@ -170,15 +165,13 @@
                                 </div>
                             </div>
                         </div>
-                        <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Salvar</button>
+                        <hr class="mb-2">
+                        <button class="btn btn-warning mb-4" type="submit">Salvar</button>
                     </form>
                 </div>
             </div>
 
-            <footer class="my-5 pt-5 text-muted text-center text-small">
-                RODAPE
-            </footer>
+           
         </div>
 
         <!-- Bootstrap core JavaScript

@@ -1,7 +1,7 @@
 <?php include 'cabecalho.php'; ?>
 
 <div class="container">
-    <div class="row mt-4">
+    <div class="row">
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -145,11 +145,11 @@
                     <nav aria-label="...">
                         <ul class="pagination">
                             <li class="page-item disabled">
-                                <a class="page-link" href="categoria.php" tabindex="-1">Previous</a>
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
                             </li>
                             <li class="page-item"><a class="page-link" href="categoria_2.php">1</a></li>
                             <li class="page-item active">
-                                <a class="page-link" href="categoria_3.php">2 <span class="sr-only">(current)</span></a>
+                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item">
