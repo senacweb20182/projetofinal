@@ -3,7 +3,19 @@
 session_start();
 require_once 'conexao.php';
 
+function efetuarLogin($login, $senha){ //já funcional com o banco on-line
+    $link = abreConexao();
+
+    $query = "select nome, permissao from perfil_usuario where login = '$login' and senha = '$senha'";
+    $result = mysqli_query($link, $query);
+    
+    $result = mysqli_fetch_assoc($result);
+    
+    return $result;
+}
+
 function cadastroCliente($nome,$email,$login,$senha,$data_nasc,$cpf, $telefone, $cep, $bairro, $cidade, $uf, $rua, $numero, $complemento) {
+//necessita atualização com o banco online
     
     $link = abreConexao();
     $query = "insert into tb_usuarios(nome,email, login, senha, data_nasc, cpf, celular, cep, bairro, cidade, uf, rua, numero, complemento) values ('$nome', '$email', '$login', '$senha', '$data_nasc', '$cpf', '$telefone', $cep, $bairro, $cidade, $uf, $rua, $numero, $complemento)";

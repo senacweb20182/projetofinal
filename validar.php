@@ -53,7 +53,7 @@ function validarLogin($login) { //aceita 3 ou mais caracteres alfa-numericos
     }
 }
 
-function validarSenha($senha) { //aceita uma senha com no minimo 8 caracteres e no maximo 8
+function validarSenha($senha) { //aceita uma senha com no minimo 8 caracteres e no maximo 30
     preg_match_all('/^[A-Za-z0-9@\+\-\.\_\@\&\#\=\*\$]{8,30}$/m', $senha, $matches, PREG_SET_ORDER, 0);
     if ($matches) {
         return true;
