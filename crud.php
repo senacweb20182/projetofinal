@@ -14,11 +14,11 @@ function efetuarLogin($login, $senha){ //já funcional com o banco on-line
     return $result;
 }
 
-function cadastroCliente($nome,$email,$login,$senha,$data_nasc,$cpf, $telefone, $cep, $bairro, $cidade, $uf, $rua, $numero, $complemento) {
+function cadastroCliente($nome, $email, $login, $senha, $data_nasc, $cpf, $telefone, $cep, $bairro, $cidade, $rua, $numero, $complemento){
 //necessita atualização com o banco online
     
     $link = abreConexao();
-    $query = "insert into tb_usuarios(nome,email, login, senha, data_nasc, cpf, celular, cep, bairro, cidade, uf, rua, numero, complemento) values ('$nome', '$email', '$login', '$senha', '$data_nasc', '$cpf', '$telefone', $cep, $bairro, $cidade, $uf, $rua, $numero, $complemento)";
+    $query = "call insere_contato('$nome', '$email', '$login', '$senha', '$data_nasc', '$cpf', '$telefone', '$cep', '$bairro', '$cidade', '$rua', '$numero', '$complemento'");
 
     if (mysqli_query($link, $query)) {
         return true;

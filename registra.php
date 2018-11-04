@@ -22,7 +22,7 @@ if ($_POST) {
     $rua = filter_input(INPUT_POST, "rua", FILTER_SANITIZE_STRING);
     $numero = filter_input(INPUT_POST, "numero", FILTER_SANITIZE_NUMBER_INT);
     $complemento = filter_input(INPUT_POST, "complemento", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $telefone = $ddd . $celular;
+    
 
     if (validarNome($nome)) {
         $_SESSION['cond_cli']['nome'] = true;
@@ -88,42 +88,35 @@ if ($_POST) {
         $_SESSION['cond_cli']['cep'] = false;
         $_SESSION['valorcli']['cep'] = "";
     }
-    if (validarBairro($bairro)) {
+    if (validarTexto($bairro)) {
         $_SESSION['cond_cli']['bairro'] = true;
         $_SESSION['valorcli']['bairro'] = $cep;
     } else {
         $_SESSION['cond_cli']['bairro'] = false;
         $_SESSION['valorcli']['bairro'] = "";
     }
-    if (validarCidade($cidade)) {
-        $_SESSION['cond_cli']['cidade'] = true;
-        $_SESSION['valorcli']['cidade'] = $cidade;
-    } else {
-        $_SESSION['cond_cli']['cidade'] = false;
-        $_SESSION['valorcli']['cidade'] = "";
-    }
-    if (validarUf($uf)) {
+    if (validarUf($uf, $cidade)) {
         $_SESSION['cond_cli']['uf'] = true;
         $_SESSION['valorcli']['uf'] = $uf;
     } else {
         $_SESSION['cond_cli']['uf'] = false;
         $_SESSION['valorcli']['uf'] = "";
     }
-    if (validarRua($rua)) {
+    if (validarTexto($rua)) {
         $_SESSION['cond_cli']['rua'] = true;
         $_SESSION['valorcli']['rua'] = $rua;
     } else {
         $_SESSION['cond_cli']['rua'] = false;
         $_SESSION['valorcli']['rua'] = "";
     }
-    if (validarNumero($numero)) {
+    if (validarNumeroEndereco($numero)) {
         $_SESSION['cond_cli']['numero'] = true;
         $_SESSION['valorcli']['numero'] = $numero;
     } else {
         $_SESSION['cond_cli']['numero'] = false;
         $_SESSION['valorcli']['numero'] = "";
     }
-    if (validarComplemento($complemento)) {
+    if (validarTexto($complemento)) {
         $_SESSION['cond_cli']['complemento'] = true;
         $_SESSION['valorcli']['complemento'] = $complemento;
     } else {
@@ -131,17 +124,16 @@ if ($_POST) {
         $_SESSION['valorcli']['complemento'] = "";
     }
 
+    $telefone = $ddd . $celular;
 
-
-/*
-    validarUF("RJ", "Rio de janeiro");
-*/
+    var_dump($_SESSION);
+    die();
 
     if (in_array(false, $_SESSION['cond_cli'])) {
 
         header("Location: cadastro.php");
     } else {
-        if (cadastroCliente($nome, $email, $login, $senha, $data_nasc, $cpf, $telefone, $cep, $bairro, $cidade, $uf, $rua, $numero, $complemento)) {
+        if (cadastroCliente($nome, $email, $login, $senha, $data_nasc, $cpf, $telefone, $cep, $bairro, $cidade, $rua, $numero, $complemento)) {
             // cria a sessão e define valor a ela
             $_SESSION['msg'] = true;
         } else {

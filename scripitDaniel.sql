@@ -40,6 +40,24 @@ ALTER TABLE tb_usuarios ADD email VARCHAR(50) NULL;
 
 insert into tb_perfil(id_perfil, descricao) values (1, 'admim');
 
+DROP PROCEDURE IF EXISTS insere_contato;
+DELIMITER ;;
+CREATE PROCEDURE insere_contato(pnome varchar(255), pemail varchar(50), plogin varchar (45), psenha varchar(50), pdata date, pcpf varchar(14), 
+								ptel varchar(13), pcep varchar(10), pbairro varchar(45), pcidade varchar(8), prua varchar(50), pnum int(11), pcompl varchar(45))
+BEGIN
+	insert into tb_cidades(cod_cidade) select * from (select pcidade ) AS tmp where not exists( select cod_cidade from tb_cidades where cod_cidade = pcidade COLLATE utf8_unicode_ci) LIMIT 1;
+    insert into tb_telefones(celular) select * from (select ptel) AS tmp where not exists( select celular from tb_telefones where celular = ptel COLLATE utf8_unicode_ci) LIMIT 1;
+    insert into tb_bairros(bairro) select * from (select pbairro) AS tmp where not exists( select bairro from tb_bairros where bairro = pbairro COLLATE utf8_unicode_ci) LIMIT 1;
+	insert into tb_usuarios (nome, data_nasc, cpf, email, login, senha, tb_perfil_id_perfil) values (pnome, pdata, pcpf, pemail, plogin, psenha, 1);
+	SET @CID = (select id_cidade from tb_cidades where cod_cidade = pcidade COLLATE utf8_unicode_ci);
+	SET @TID = (select id_tel from tb_telefones where celular = ptel COLLATE utf8_unicode_ci);
+    SET @BID = (select id_bairro from tb_bairros where bairro = pbairro COLLATE utf8_unicode_ci);
+    SET @UID = (select id_usuario from tb_usuarios where cpf = pcpf COLLATE utf8_unicode_ci); 
+    insert into tb_endereco(rua, numero, comp, cep, tb_bairros_id_bairro, tb_cidades_id_cidade, tb_usuarios_id_usuario) values (prua, pnum, pcompl, pcep, @BID, @CID, @UID);
+    insert into tb_usuarios_has_tb_telefones (tb_telefones_id_tel, tb_usuarios_id_usuario) values (@TID, @UID);
+END ;;
+DELIMITER ;
+
 
 
 

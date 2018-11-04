@@ -227,5 +227,10 @@ function validarUF($uf, $cidade) {
     }
     return false;
 }
+
+function validarTexto($texto){
+    preg_match_all('/^[A-Za-z0-9]+$/m', $texto, $matches, PREG_SET_ORDER, 0);
+    return $matches;
+}
 ?>
 
