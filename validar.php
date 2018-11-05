@@ -228,8 +228,14 @@ function validarUF($uf, &$cidade) {
 }
 
 function validarTexto($texto){
-    preg_match_all('/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9\s]+$/m', $texto, $matches, PREG_SET_ORDER, 0);
+    preg_match_all('/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9\s()]+$/m', $texto, $matches, PREG_SET_ORDER, 0);
     return $matches;
 }
+
+function validarTextoVazio($texto){
+    preg_match_all('/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9\s()]*$/m', $texto, $matches, PREG_SET_ORDER, 0);
+    return $matches;
+}
+
 ?>
 

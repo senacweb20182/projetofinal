@@ -19,30 +19,47 @@ function cadastroCliente($nome, $email, $login, $senha, $data_nasc, $cpf, $telef
     
     $link = abreConexao();
     $query = "call insere_contato('$nome', '$email', '$login', '$senha', '$data_nasc', '$cpf', '$telefone', '$cep', '$bairro', '$cidade', '$rua', '$numero', '$complemento')";
-
-    if(!$result = mysqli_query($link, $query)){
-        return false;
+    if ($result = mysqli_query($link, $query)) {
+        $result = mysqli_fetch_assoc($result);
+        if(isset($result['FALSE'])){
+            $_SESSION['cond_cli']['cadastro_existente'] = true;
+            return false;
+        }
+        return true;
     }
-    
-    $result = mysqli_fetch_assoc($result);
+    return false;
+}
 
-    if(isset($result['FALSE'])){
-         if($result['FALSE'] == 0){
-              return false;
-         }
+function salvar($cod, $prod, $cat, $marca, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso) {
+    $link = abreConexao();
+    $query = "call insere_produto('$cod','$prod', '$cat', '$marca' '$quant', '$price', '$desc', '$rev', '$alt', '$larg', '$comp', '$diam', '$peso')";
+    if(mysqli_query($link, $query)) {
+        return true;
     }
-    return true;
+
+    return false;
+
 }
 
 function buscar($prod) {
     $link = abreConexao();
 
-
-    $query = "select * from tb_produtos where produto like '$prod'";
-
+    $query = "select * from tb_produtos where produto like '%$prod%'";
     $result = mysqli_query($link, $query);
+    $arrayProduto = array();
+    while($produto = mysqli_fetch_row($result)) {
+        array_push($arrayProduto, $produto);
+    }
 
-    if (mysqli_error($link)) {
+    return $arrayProduto;
+}
+
+function buscarId($id) {
+    $link = abreConexao();
+
+    $query = "select * from tb_produtos where id = $id";
+    $result = mysqli_query($link, $query);
+    if(mysqli_error($link)) {
         $_SESSION['error'] = 'falha ao gravar';
     }
     return mysqli_fetch_assoc($result);

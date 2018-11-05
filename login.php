@@ -61,6 +61,15 @@
 					<?php }
 					unset($_SESSION['login_error']);
 				}?>
+			<?php if(isset($_SESSION['msg'])){
+						if($_SESSION['msg']){ ?>
+							<div class="alert alert-success" role="alert">
+  								Cadastro realizado com sucesso!
+							</div>
+							<?php
+						}
+						unset($_SESSION['msg']);
+			} ?>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
                                     <p> Já tem uma conta?</p>

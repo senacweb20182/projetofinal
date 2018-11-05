@@ -4,7 +4,10 @@ require_once 'crud.php';
 require_once 'validar.php';
 # inicia a sessão no arquivo
 
+
+
 if ($_POST) {
+    
 
     $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
@@ -23,7 +26,6 @@ if ($_POST) {
     $numero = filter_input(INPUT_POST, "numero", FILTER_SANITIZE_NUMBER_INT);
     $complemento = filter_input(INPUT_POST, "complemento", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-
     if (validarNome($nome)) {
         $_SESSION['cond_cli']['nome'] = true;
         $_SESSION['valorcli']['nome'] = $nome;
@@ -116,7 +118,7 @@ if ($_POST) {
         $_SESSION['cond_cli']['numero'] = false;
         $_SESSION['valorcli']['numero'] = "";
     }
-    if (validarTexto($complemento)) {
+    if (validarTextoVazio($complemento)) {
         $_SESSION['cond_cli']['complemento'] = true;
         $_SESSION['valorcli']['complemento'] = $complemento;
     } else {
@@ -124,21 +126,20 @@ if ($_POST) {
         $_SESSION['valorcli']['complemento'] = "";
     }
 
-
     $telefone = $ddd . $celular;
 
     if (in_array(false, $_SESSION['cond_cli'])) {
-
         header("Location: cadastro.php");
-    } else {
+    } 
+    else{
         if (cadastroCliente($nome, $email, $login, $senha, $data_nasc, $cpf, $telefone, $cep, $bairro, $cidade, $rua, $numero, $complemento)) {
-            // cria a sessão e define valor a ela
             $_SESSION['msg'] = true;
+            header("location:login.php");
         } else {
-            $_SESSION['msg'] = false;
+            if(!isset($_SESSION['cond_cli']['cadastro_existente'])){
+                $_SESSION['msg'] = false;
+            }
+            header("location:cadastro.php");
         }
     }
-
-
-    header("location:cadastro.php");
 }
