@@ -26,7 +26,7 @@ function validarTelefone(&$telefone) { //tanto celular como residencial
 }
 
 function validarNome(&$nome) { //apenas letras e espaços simples entre elas
-    preg_match_all('/^[a-zA-Z\ç\Ç]+(\s+[a-zA-Z\ç\Ç]+)*$/m', $nome, $matches, PREG_SET_ORDER, 0);
+    preg_match_all('/^[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+(\s+[a-zA-Z\ç\Ç]+)*$/m', $nome, $matches, PREG_SET_ORDER, 0);
     if ($matches) {
         $nome = preg_replace('(\s+)', ' ', $nome); // preg_replace tem que fazer a passagem de parametro por  referencia da variavel dentro da função
         return true;
@@ -36,7 +36,7 @@ function validarNome(&$nome) { //apenas letras e espaços simples entre elas
 }
 
 function validarEmail($email) {
-    preg_match_all('/^[a-zA-Z0-9._%+-]+@{1}([a-zA-Z0-9-]+)(\.{1}[a-zA-Z]+)+$/m', $email, $matches, PREG_SET_ORDER, 0);
+    preg_match_all('/^[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9._%+-]+@{1}([a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9-]+)(\.{1}[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+)+$/m', $email, $matches, PREG_SET_ORDER, 0);
     if ($matches) {
         return true;
     } else {
@@ -54,7 +54,7 @@ function validarLogin($login) { //aceita 3 ou mais caracteres alfa-numericos
 }
 
 function validarSenha($senha) { //aceita uma senha com no minimo 8 caracteres e no maximo 30
-    preg_match_all('/^[A-Za-z0-9@\+\-\.\_\@\&\#\=\*\$]{8,30}$/m', $senha, $matches, PREG_SET_ORDER, 0);
+    preg_match_all('/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9@\+\-\.\_\@\&\#\=\*\$]{8,30}$/m', $senha, $matches, PREG_SET_ORDER, 0);
     if ($matches) {
         return true;
     } else {
@@ -167,7 +167,7 @@ function validarDDD($ddd) {
 ###########################################################################################################
 
 function validarEndereco($campo) {
-    preg_match_all('/^([a-zA-Z])+([a-zA-Z0-9]|\.|\s)*$/m', $campo, $matches, PREG_SET_ORDER, 0);
+    preg_match_all('/^([a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ])+([a-zA-Z0-9]|\.|\s)*$/m', $campo, $matches, PREG_SET_ORDER, 0);
     return $matches;
 }
 
@@ -190,7 +190,7 @@ function validarNumeroEndereco($num_endereco) {
   die();
   } */
 
-function validarUF($uf, $cidade) {
+function validarUF($uf, &$cidade) {
     $uf_id = 0;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://servicodados.ibge.gov.br/api/v1/localidades/estados");
@@ -220,8 +220,7 @@ function validarUF($uf, $cidade) {
     $json_city = json_decode($json_city, 1);
     foreach ($json_city as $value) {
         if ($cidade == $value['nome']) {
-            var_dump($value['nome']);
-            die();
+            $cidade = $value['id'];
             return true;
         }
     }
@@ -229,7 +228,7 @@ function validarUF($uf, $cidade) {
 }
 
 function validarTexto($texto){
-    preg_match_all('/^[A-Za-z0-9]+$/m', $texto, $matches, PREG_SET_ORDER, 0);
+    preg_match_all('/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9\s]+$/m', $texto, $matches, PREG_SET_ORDER, 0);
     return $matches;
 }
 ?>

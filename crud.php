@@ -18,13 +18,20 @@ function cadastroCliente($nome, $email, $login, $senha, $data_nasc, $cpf, $telef
 //necessita atualização com o banco online
     
     $link = abreConexao();
-    $query = "call insere_contato('$nome', '$email', '$login', '$senha', '$data_nasc', '$cpf', '$telefone', '$cep', '$bairro', '$cidade', '$rua', '$numero', '$complemento'");
+    $query = "call insere_contato('$nome', '$email', '$login', '$senha', '$data_nasc', '$cpf', '$telefone', '$cep', '$bairro', '$cidade', '$rua', '$numero', '$complemento')";
 
-    if (mysqli_query($link, $query)) {
-        return true;
+    if(!$result = mysqli_query($link, $query)){
+        return false;
     }
+    
+    $result = mysqli_fetch_assoc($result);
 
-    return false;
+    if(isset($result['FALSE'])){
+         if($result['FALSE'] == 0){
+              return false;
+         }
+    }
+    return true;
 }
 
 function buscar($prod) {

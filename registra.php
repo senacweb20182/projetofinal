@@ -124,10 +124,8 @@ if ($_POST) {
         $_SESSION['valorcli']['complemento'] = "";
     }
 
-    $telefone = $ddd . $celular;
 
-    var_dump($_SESSION);
-    die();
+    $telefone = $ddd . $celular;
 
     if (in_array(false, $_SESSION['cond_cli'])) {
 
