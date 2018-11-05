@@ -113,3 +113,13 @@ background-color: #0000FF;
     color: black;
 }
 
+a, a:hover, a:link, a:visited, a:active {
+    text-decoration: none;
+    color: #000;
+}
+
+.page-item.active .page-link {
+    background-color: #fbc820;
+    border-color: #fbc820;
+    color: black;
+}

@@ -5,8 +5,9 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Categoria</li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="categoria.php">Categoria</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sub-categoria</li>
                 </ol>
             </nav>
         </div>
@@ -73,15 +74,10 @@
                             <li class="page-item disabled">
                                 <a class="page-link" href="categoria.php" tabindex="-1">Anterior</a>
                             </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="categoria.php">1<span class="sr-only">(current)</span></a>
+                            <li class="page-item active"><a class="page-link" href="categoria_smartwatch.php">1<span class="sr-only">(current)</span></a></li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">Proxima</a>
                             </li>
-                            <li class="page-item">
-                                <a class="page-link" href="categoria_p2.php">2</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="categoria_p3.php">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="categoria_p2.php">Proxima</a>
                             </li>
                         </ul>
                     </nav>

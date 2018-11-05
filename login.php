@@ -9,10 +9,10 @@
 <head>
 	<title>Login Page</title>
    <!--Made with love by Mutiullah Samim -->
-   
+
 	<!--Bootsrap 4 CDN-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
@@ -32,19 +32,18 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form method="POST" action="arq_login.php">
+				<form action="arq_login.php" method="POST">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username">
-						
+						<input name="login" id="id_login" type="text" class="form-control" placeholder="username">
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password">
+						<input name="senha" id="id_senha" type="password" class="form-control" placeholder="password">
 					</div>
 					<div class="row align-items-center remember ml-3">
 						<input type="checkbox"> Lembre-me
@@ -54,12 +53,20 @@
 					</div>
 				</form>
 			</div>
+			<?php if(isset($_SESSION['login_error'])){
+					if($_SESSION['login_error']){ ?>
+					<div class="alert alert-warning" role="alert">
+							Senha ou Login Inválidos.
+					</div>
+					<?php }
+					unset($_SESSION['login_error']);
+				}?>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
                                     <p> Já tem uma conta?</p>
-                                    
+
                                     <p><a href="cadastro.php">Criar conta</a></p>
-                                        
+
 				</div>
 				<div class="d-flex justify-content-center">
 					<a href="#">Esqueceu sua senha? </a>
@@ -67,7 +74,7 @@
 			</div>
 		</div>
 	</div>
-    
+
         <div class="mb-5"> </div>
 </div>
 </body>

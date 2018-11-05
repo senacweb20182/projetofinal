@@ -70,18 +70,18 @@
                 <div class="col-12">
                     <nav aria-label="...">
                         <ul class="pagination">
-                            <li class="page-item disabled">
+                            <li class="page-item active">
                                 <a class="page-link" href="categoria.php" tabindex="-1">Anterior</a>
                             </li>
-                            <li class="page-item active">
+                            <li class="page-item ">
                                 <a class="page-link" href="categoria.php">1<span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="page-item">
+                            <li class="page-item active">
                                 <a class="page-link" href="categoria_p2.php">2</a>
                             </li>
                             <li class="page-item"><a class="page-link" href="categoria_p3.php">3</a></li>
                             <li class="page-item">
-                                <a class="page-link" href="categoria_p2.php">Proxima</a>
+                                <a class="page-link" href="categoria_p3.php">Proxima</a>
                             </li>
                         </ul>
                     </nav>

@@ -21,7 +21,7 @@ session_start();
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="index.php"><img src="img/Logo_1.png" height=18px" width="100px" alt=""/></a>
-                
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,40 +34,39 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link" href="categoria.php">Categoria</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">Contato</a>
                         </li>
-                       
+
                         <!--
                         <li class="nav-item">
                             <a class="nav-link" href="cadastro.php">Cadastro</a>
                         </li>
                         -->
-                       
+
                         <li class="nav-item">
                             <a class="nav-link" href="login.php"><i class="fas fa-user"></i></a>
-                         
+
                         </li>
-                       
-                      
+
+
                     </ul>
 
-                <form class="form-inline my-2 my-lg-2">
-                <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Pesquisar...">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary btn-number">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-                    <a class="btn btn-warning btn-sm ml-3" href="cart.php">
-                    <i class="fa fa-shopping-cart"></i> Carrinho
-                    <span class="badge badge-light">0</span>
-                </a>
-            </form>
-                </div>
-            </div>
-        </nav>
-        
+                    <form action="consulta-prod.php" method="get" class="form-inline my-2 my-lg-0">
+                  <div class="input-group input-group-sm">
+                      <input type="text" class="form-control" aria-label="Small" name='produto' aria-describedby="inputGroup-sizing-sm" placeholder="Pesquisar...">
+                      <div class="input-group-append">
+                          <button type="submit" class="btn btn-secondary btn-number">
+                              <i class="fa fa-search"></i>
+                          </button>
+                      </div>
+                  </div>
+                  <a class="btn btn-warning btn-sm ml-3" href="cart.php">
+                      <i class="fa fa-shopping-cart"></i> Carrinho
+                      <span class="badge badge-light">0</span>
+                  </a>
+              </form>
+                  </div>
+              </div>
+          </nav>

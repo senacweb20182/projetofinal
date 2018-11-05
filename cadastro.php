@@ -1,5 +1,6 @@
-<?php include 'cabecalho.php'; ?>
 <?php
+include 'cabecalho.php';
+
 if (isset($_SESSION['valorcli'])) {
     $registro = $_SESSION['valorcli'];
 } else {
@@ -17,9 +18,6 @@ if (isset($_SESSION['valorcli'])) {
 <body class="bg-light">
     <div class="container">
         <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="?" alt="" width="72" height="72">
-            <h2>cc</h2>
-            <p class="lead">?</p>
         </div>
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
@@ -59,7 +57,11 @@ if (isset($_SESSION['valorcli'])) {
                 </form>
             </div>
             <div class="col-md-8 order-md-1">
+                <div class="alert alert-danger d-none" role="alert" id="spanM">
+                    Senhas não são iguais!
+                </div>
                 <form action="registra.php" method="post" enctype='multipart/form-data' class="needs-validation" novalidate>
+
                     <h4 class="mb-3">Cadastro de Cliente</h4>
                     <div class="row">
                         <div class="col-md-7 mb-3">
@@ -79,29 +81,39 @@ if (isset($_SESSION['valorcli'])) {
                     </div>
 
                     <div class="row"> 
-                        <div class="col-md-4 mb-3">
-                            <label for="username">Nome de usuário</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">@</span>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="col-md-4 mb-3">
+                                    <label for="username">Nome de usuário</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="login" name="login" placeholder="Digite o Login" value=<?= $registro['login'] ?> >
+                                        <div class="invalid-feedback" style="width: 100%;">
+                                            Nome de usuário obrigatório.
+                                        </div>
+                                    </div>
                                 </div>
-                                <input type="text" class="form-control" id="login" name="login" placeholder="Digite o Login" value=<?= $registro['login'] ?> >
-                                <div class="invalid-feedback" style="width: 100%;">
-                                    Nome de usuário obrigatório.
+                                <div class="col-md-4 mb-3">
+                                    <label for="senha">Senha </label>
+                                    <div class="input-group">                                        
+                                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="senhaValidar">Confirmar Senha</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="senhaValidar" name="senhaValidar" placeholder="Digite a senha" value="">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-eye-slash" type="button" id="show_password" name="show_password"  aria-hidden="true" ></i></span>
+                                        </div>                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="senha">Senha </label>
-                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha" value="">
-
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="senhaValidar">Senha Validar </label>
-                            <input type="password" class="form-control" id="senhaValidar" name="senhaValidar" placeholder="Digite a senha" value="">
-                        </div>
                     </div>
+
                     <div class="row"> 
                         <div class="col-md-4 mb-3">
                             <label>Data de Nascimento</label>
@@ -204,16 +216,16 @@ if (isset($_SESSION['valorcli'])) {
                     if (isset($_SESSION['msg'])) {
                         if ($_SESSION['msg']) {
                             ?>
-                            <p class="pull-right text-success">Dados gravados com sucesso</p>
+                            <p class="pull-right text-success">Dados gravados no banco com sucesso</p>
                             <?php
                         } else {
                             ?>
-                            <p class="pull-right text-danger">Erro ao gravar</p>
+                            <p class="pull-right text-danger">Erro ao gravar no banco de dados</p>
                             <?php
                         }
-                         # removem a sessão
-                    unset($_SESSION['msg']);
-                    }                   
+                        # removem a sessão
+                        unset($_SESSION['msg']);
+                    }
                     ?>
                 </form>
             </div>
@@ -224,6 +236,6 @@ if (isset($_SESSION['valorcli'])) {
         ?>
     </div> 
     <br>
-    <?php include 'rodape.php'; ?>
-
-
+    <?php
+    include 'rodape.php';
+    ?> 
