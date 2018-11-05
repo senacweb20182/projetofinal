@@ -1,6 +1,8 @@
 <?php
   function createThumbnail($filename) {
-    header("Content-type: image/jpeg");
+    
+    //header("Content-type: image/jpeg");
+    
     // dimensões do thumbnail
     $thumbnail_height = 400;
     $thumbnail_width = 400;
@@ -13,7 +15,7 @@
       mkdir($dirThumbnails);
     }
 
-    $file = $filename;
+    $file = 'uploads' . DIRECTORY_SEPARATOR .$filename;
     // imagecreatefromjpeg - fn php que cria um temporario para o GD
     $src_img = imagecreatefromjpeg($file);
     // getimagesize - fn php para retornar um array com as dimensões da imagem
@@ -31,7 +33,7 @@
     #echo "dimensões $src_img_size_width, $src_img_size_height";
 
     // gerar nome do thumbnail
-    $nomeThumbnail = $file;
+    $nomeThumbnail = $filename;
 
     // gera o thumbnail
     imagecopyresampled($thumbnail, $src_img, 0, 0, 0, 0, $thumbnail_width, $thumbnail_height, $src_img_size_width, $src_img_size_height);
@@ -44,7 +46,7 @@
 }
 
 function createThumbnail2($filename) {
-  header("Content-type: image/jpeg");
+  //header("Content-type: image/jpeg");
   // dimensões do thumbnail
   $thumbnail_height = 800;
   $thumbnail_width = 800;
@@ -57,7 +59,7 @@ function createThumbnail2($filename) {
     mkdir($dirThumbnails);
   }
 
-  $file = $filename;
+  $file = 'uploads' . DIRECTORY_SEPARATOR .$filename;
   // imagecreatefromjpeg - fn php que cria um temporario para o GD
   $src_img = imagecreatefromjpeg($file);
   // getimagesize - fn php para retornar um array com as dimensões da imagem
@@ -75,7 +77,7 @@ function createThumbnail2($filename) {
   #echo "dimensões $src_img_size_width, $src_img_size_height";
 
   // gerar nome do thumbnail
-  $nomeThumbnail = $file;
+  $nomeThumbnail = $filename;
 
   // gera o thumbnail
   imagecopyresampled($thumbnail, $src_img, 0, 0, 0, 0, $thumbnail_width, $thumbnail_height, $src_img_size_width, $src_img_size_height);
@@ -85,6 +87,4 @@ function createThumbnail2($filename) {
   // apaga as img do cache
   imagedestroy($thumbnail);
   imagedestroy($src_img);
-
-
   }

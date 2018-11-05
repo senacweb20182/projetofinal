@@ -17,43 +17,39 @@
         $alt = filter_input(INPUT_POST, "alt", FILTER_SANITIZE_NUMBER_INT);
         $comp = filter_input(INPUT_POST, "comp", FILTER_SANITIZE_NUMBER_INT);
         $diam = filter_input(INPUT_POST, "diam", FILTER_SANITIZE_NUMBER_INT);
+        $larg = filter_input(INPUT_POST, "larg", FILTER_SANITIZE_NUMBER_INT);
 
 
 
        // if(filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT)) {
          //   $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
         //}
-
         if($file['error']) {
             //throw new Exception('Error: ' . $file['error']);
             $_SESSION['msg'] = false;
 
             exit;
         }
-
         $dirUploads = 'uploads';
 
         if(!is_dir($dirUploads)) {
             mkdir($dirUploads);
         }
-
         // http://php.net/manual/pt_BR/function.move-uploaded-file.php
         #move_uploaded_file(filename, destination) // essa função retorna um booleano
         if(move_uploaded_file($file['tmp_name'], $dirUploads . DIRECTORY_SEPARATOR . $file['name'])) {
-
         } else {
             //throw new Exception('Falha ao efetuar o upload.');
             $_SESSION['msg'] = false;
             exit;
         }
-
         $foto=$file['name'];
 
+        
         createThumbnail($foto);
         createThumbnail2($foto);
 
-
-        if (salvar($cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso)){
+        if (salvar($cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso, $marca, $cat)){
             // cria a sessão e define valor a ela
             $_SESSION['msg'] = true;
         }
@@ -62,5 +58,5 @@
         }
 
 
-      header("location:cadastro.php");
+      header("location:cadastro_prod.php");
     }

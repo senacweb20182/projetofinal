@@ -22,7 +22,7 @@
             <div class="row col-xs-6 col-xs-offset-3">
                 <fieldset>
                     <legend>Registro de Produto</legend>
-                    <form action="registra.php" method="post" enctype='multipart/form-data'>
+                    <form action="registra_prod.php" method="post" enctype='multipart/form-data'>
                         <div class="form-group">
                             <label for="prod">Código de referência</label>
                             <input type="number" class="form-control"
@@ -98,6 +98,7 @@
                         </div>
                         <div>
                             <button type="submit" class="btn btn-info">Salvar</button>
+                            
                             <?php
                                 if(isset($_SESSION['msg'])) {
                                     if($_SESSION['msg']) {
@@ -114,6 +115,20 @@
                                 # removem a sessão
                                 unset($_SESSION['msg']);
                             ?>
+
+                        <?php   if(isset($_SESSION['cond_prod']['cadastro_existente'])){
+                            
+                                    if($_SESSION['cond_prod']['cadastro_existente']){ 
+                        ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            Esse item ja existe!
+                                        </div>
+                        <?php       
+                                    }
+                                    unset($_SESSION['cond_prod']['cadastro_existente']);
+                                }
+                        ?>
+
                         </div>
                     </form>
                 </fieldset>
@@ -122,4 +137,4 @@
     </section>
         </div>
     </section>
-<?php include 'rodape.php' ?>
+<?php include 'rodape.php'; ?>

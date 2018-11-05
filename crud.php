@@ -29,16 +29,20 @@ function cadastroCliente($nome, $email, $login, $senha, $data_nasc, $cpf, $telef
     }
     return false;
 }
+//pcod int(11), pnome varchar(45), pqtd int(11), pvenda float, pdesc varchar(100), pdescc varchar(200), pa varchar(4), pl varchar(4), pc varchar(4), pd varchar(4), pp varchar(4), pmarca varchar(50), pcategoria varchar(50))
 
-function salvar($cod, $prod, $cat, $marca, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso) {
+function salvar($cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso, $marca, $cat) {
     $link = abreConexao();
-    $query = "call insere_produto('$cod','$prod', '$cat', '$marca' '$quant', '$price', '$desc', '$rev', '$alt', '$larg', '$comp', '$diam', '$peso')";
-    if(mysqli_query($link, $query)) {
+    $query = "call insere_produto('$cod','$prod','$quant', '$price', '$desc', '$rev', '$alt', '$larg', '$comp', '$diam', '$peso', '$marca', '$cat')";
+    if ($result = mysqli_query($link, $query)) {
+        $result = mysqli_fetch_assoc($result);
+        if(isset($result['FALSE'])){
+            $_SESSION['cond_prod']['cadastro_existente'] = true;
+            return false;
+        }
         return true;
     }
-
     return false;
-
 }
 
 function buscar($prod) {
