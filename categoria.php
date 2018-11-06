@@ -49,13 +49,13 @@
                 ?>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img class="card-img-top" src="<?= "uploads" . DIRECTORY_SEPARATOR . $produto[2] ?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?= "uploads" . DIRECTORY_SEPARATOR . $produto[3] ?>" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$produto[0] ?>" title="View Product"><?= $produto[1] ?></a></h4>
-                            <p class="card-text"><?= $produto[7] ?></p>
+                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$produto[0] ?>" title="View Product"><?= $produto[3] ?></a></h4>
+                            <p class="card-text"><?= $produto[6] ?></p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block"><?= $produto[4] ?></p>
+                                    <p class="btn btn-danger btn-block"><?= $produto[5] ?></p>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="btn btn-warning btn-block">Add to cart</a>

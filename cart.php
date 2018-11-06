@@ -1,8 +1,8 @@
 <?php include 'cabecalho.php';
 
 
-require_once 'buscaidprod.php';
-require_once 'carrinho.php';
+include_once 'buscaidprod.php';
+include_once 'carrinho.php';
 
 ?>
 
@@ -26,7 +26,7 @@ require_once 'carrinho.php';
                       <form action="carrinho.php?acao=atu" method="post">
                           <tbody>
                               <?php
-                              
+
                               if (count($_SESSION['carrinho']) == 0) {
                                   echo '<tr>
                                           <td>Não há produtos no carrinho!</td>
@@ -35,16 +35,20 @@ require_once 'carrinho.php';
                                   $total = 0;
 
 
+
                                   foreach ($_SESSION['carrinho'] as $id => $qtd) {
+
+
 
                                       $ln = buscarId($id);
 
-                                      $foto = $ln['foto'];
-                                      $nome = $ln['produto'];
-                                      $preco = number_format($ln['preco'], 2, ',', '.');
-                                      $sub = number_format($ln['preco'] * $qtd, 2, ',', '.');
 
-                                      $total += $ln['preco'] * $qtd;
+                                      $foto = $ln['foto'];
+                                      $nome = $ln['nome_produto'];
+                                      $preco = number_format($ln['preco_venda'], 2, ',', '.');
+                                      $sub = number_format($ln['preco_venda'] * $qtd, 2, ',', '.');
+
+                                      $total += $ln['preco_venda'] * $qtd;
                                       ?>
                                       <tr>
                                           <td><?= $foto ?></td>

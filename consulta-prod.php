@@ -6,11 +6,11 @@
 
         $prod = filter_input(INPUT_GET, "produto", FILTER_SANITIZE_STRING);
 
-        
+
 
         if(buscar($prod)) {
             // cria a sessão e define valor a ela
-            $_SESSION['prod'] = buscar($prod);          
+            $_SESSION['prod'] = buscar($prod);
             header("location:categoria.php");
             exit;
         } else {

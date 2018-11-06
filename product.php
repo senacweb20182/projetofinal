@@ -61,7 +61,7 @@
         <div class="col-12 col-lg-6 add_to_cart_block">
             <div class="card bg-light mb-3 pb-4">
                 <div class="card-body">
-                    <p class="price"><?= $prod['preco']?></p>
+                    <p class="price"><?= $prod['preco_venda']?></p>
 
                     <form method="post" action="carrinho.php?acao=add">
                         <div class="form-group">
@@ -83,13 +83,13 @@
                               </div>
                               <input type="text" class="form-control"  id="quantity" name="quantity" min="1" max="100" value="1">
                               <div class="input-group-append">
-                                  <button type="submit" formaction="carrinho.php?acao=atu" formmethod="post" name="id" value="<?=$prod['id'] ?>" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                  <button type="submit" formaction="carrinho.php?acao=atu" formmethod="post" name="id" value="<?=$prod['id_produto'] ?>" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                                       <i class="fa fa-plus"></i>
                                   </button>
                               </div>
                           </div>
                       </div>
-                          <button type="submit" formaction="carrinho.php?acao=add" formmethod="post" name="id" value="<?=$prod['id'] ?>" class="btn btn-success btn-lg btn-block text-uppercase">
+                          <button type="submit" formaction="carrinho.php?acao=add" formmethod="post" name="id" value="<?=$prod['id_produto'] ?>" class="btn btn-success btn-lg btn-block text-uppercase">
                           <i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho
                       </button>
                   </form>

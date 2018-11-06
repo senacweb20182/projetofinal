@@ -8,15 +8,15 @@ function efetuarLogin($login, $senha){ //já funcional com o banco on-line
 
     $query = "select nome, permissao from perfil_usuario where login = '$login' and senha = '$senha'";
     $result = mysqli_query($link, $query);
-    
+
     $result = mysqli_fetch_assoc($result);
-    
+
     return $result;
 }
 
 function cadastroCliente($nome, $email, $login, $senha, $data_nasc, $cpf, $telefone, $cep, $bairro, $cidade, $rua, $numero, $complemento){
 //necessita atualização com o banco online
-    
+
     $link = abreConexao();
     $query = "call insere_contato('$nome', '$email', '$login', '$senha', '$data_nasc', '$cpf', '$telefone', '$cep', '$bairro', '$cidade', '$rua', '$numero', '$complemento')";
     if ($result = mysqli_query($link, $query)) {
@@ -46,7 +46,7 @@ function salvar($cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $d
 function buscar($prod) {
     $link = abreConexao();
 
-    $query = "select * from tb_produtos where produto like '%$prod%'";
+    $query = "select * from tb_produto where nome_produto like '%$prod%'";
     $result = mysqli_query($link, $query);
     $arrayProduto = array();
     while($produto = mysqli_fetch_row($result)) {
@@ -59,7 +59,7 @@ function buscar($prod) {
 function buscarId($id) {
     $link = abreConexao();
 
-    $query = "select * from tb_produtos where id = $id";
+    $query = "select * from tb_produto where id_produto = $id";
     $result = mysqli_query($link, $query);
     if(mysqli_error($link)) {
         $_SESSION['error'] = 'falha ao gravar';
@@ -70,7 +70,7 @@ function buscarId($id) {
 function atualizar($prod, $foto, $quant, $price, $custo, $desc, $rev, $id) {
     $link = abreConexao();
 
-    $query = "update tb_produtos 
+    $query = "update tb_produtos
                     set produto = '$prod', foto = '$foto', quantidade = '$quant', preco = '$price', custo = '$custo', descricao = '$desc', review = '$rev'"
             . " where id='$id'";
 
