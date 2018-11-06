@@ -61,7 +61,7 @@ function buscar($prod) {
 function buscarId($id) {
     $link = abreConexao();
 
-    $query = "select * from tb_produto where id_produto = $id";
+    $query = "select * from produto_view where id = $id";
     $result = mysqli_query($link, $query);
     if(mysqli_error($link)) {
         $_SESSION['error'] = 'falha ao gravar';

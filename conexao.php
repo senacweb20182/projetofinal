@@ -1,9 +1,9 @@
 <?php
 
-// Host	er7lx9km02rjyf3n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	
-// Username	o1fznc6tpz06fr23	
-// Password	vk8q4jxv45pw42su	
-// Port	3306	
+// Host	er7lx9km02rjyf3n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+// Username	o1fznc6tpz06fr23
+// Password	vk8q4jxv45pw42su
+// Port	3306
 // Database	eat5kphk6ver00sk
 
 define("HOST", "er7lx9km02rjyf3n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com");

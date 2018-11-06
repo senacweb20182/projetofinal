@@ -29,7 +29,7 @@ include_once 'carrinho.php';
 
                               if (count($_SESSION['carrinho']) == 0) {
                                   echo '<tr>
-                                          <td>Não há produtos no carrinho!</td>
+                                          <td colspan="5">Não há produtos no carrinho!</td>
                                        </tr>';
                               } else {
                                   $total = 0;
@@ -38,17 +38,13 @@ include_once 'carrinho.php';
 
                                   foreach ($_SESSION['carrinho'] as $id => $qtd) {
 
-
-
                                       $ln = buscarId($id);
+                                      $foto = $ln['img'];
+                                      $nome = $ln['nome'];
+                                      $preco = number_format($ln['preco'], 2, ',', '.');
+                                      $sub = number_format($ln['preco'] * $qtd, 2, ',', '.');
 
-
-                                      $foto = $ln['foto'];
-                                      $nome = $ln['nome_produto'];
-                                      $preco = number_format($ln['preco_venda'], 2, ',', '.');
-                                      $sub = number_format($ln['preco_venda'] * $qtd, 2, ',', '.');
-
-                                      $total += $ln['preco_venda'] * $qtd;
+                                      $total += $ln['preco'] * $qtd;
                                       ?>
                                       <tr>
                                           <td><?= $foto ?></td>

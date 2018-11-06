@@ -1,7 +1,7 @@
 <?php
     require_once 'crud.php';
     # inicia a sessão no arquivo
-    
+
 
         if($_GET) {
 
@@ -11,7 +11,7 @@
         if(buscarId($id)) {
             // cria a sessão e define valor a ela
             $_SESSION['id'] = buscarId($id);
-
+            
             header("location:product.php");
             exit;
         } else {

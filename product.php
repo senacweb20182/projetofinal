@@ -1,5 +1,6 @@
 <!DOCTYPE html>
     <?php include 'cabecalho.php';
+
     if(isset($_SESSION['id'])) {
         $prod = $_SESSION['id'];
 
@@ -11,46 +12,16 @@
 
      ?>
 
-<html lang="pt">
-    <head>
-        <!-- Site meta -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>WEB TECNOLOGIA</title>
-        <!-- CSS -->
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-
-        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-	<script src='jquery.zoom.js'></script>
-
-    </head>
-    <body>
-        <!--container-->
-
 <div class="container">
     <div class="row">
-        <div class="col">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item"><a href="cart.php">Category</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Product</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
+
         <!-- Image -->
         <div class="col-12 col-lg-6">
             <div class="card bg-light mb-3 pb-1">
                 <div class="card-body">
                   <a href="" data-toggle="modal" data-target="#productModal">
-                      <img id="product_photo" data-zoom-image="img/cadeira_large.jpg" width="800" height="800" class="img-fluid" src="<?="uploads" . DIRECTORY_SEPARATOR . $prod['foto'] ?>" />
+
+                      <img id="product_photo" data-zoom-image="uploads\<?=$prod['img']?>" width="800" height="800" class="img-fluid" src="uploads\img\<?=$prod['img']?>" />
 
                   </a>
                 </div>
@@ -61,7 +32,7 @@
         <div class="col-12 col-lg-6 add_to_cart_block">
             <div class="card bg-light mb-3 pb-4">
                 <div class="card-body">
-                    <p class="price"><?= $prod['preco_venda']?></p>
+                    <p class="price"><?= $prod['preco']?></p>
 
                     <form method="post" action="carrinho.php?acao=add">
                         <div class="form-group">
@@ -123,7 +94,7 @@
                 <div class="card-header bg-primary text-uppercase"><i class="fa fa-align-justify"></i> Descrição</div>
                 <div class="card-body">
                     <p class="card-text">
-                        <?= $prod['descricao'] ?>
+                        <?= $prod['descr'] ?>
                       </p>
                 </div>
             </div>

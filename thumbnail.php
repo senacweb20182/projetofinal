@@ -1,8 +1,8 @@
 <?php
   function createThumbnail($filename) {
-    
+
     //header("Content-type: image/jpeg");
-    
+
     // dimensões do thumbnail
     $thumbnail_height = 400;
     $thumbnail_width = 400;
