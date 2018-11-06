@@ -13,7 +13,7 @@ if ($_POST) {
     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
     $login = filter_input(INPUT_POST, "login", FILTER_SANITIZE_STRING);
     $senha = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $senhaValidar = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $senhaValidar = filter_input(INPUT_POST, "senhaValidar", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $data_nasc = filter_input(INPUT_POST, "data_nasc", FILTER_SANITIZE_STRING);
     $cpf = filter_input(INPUT_POST, "cpf", FILTER_SANITIZE_NUMBER_INT);
     $ddd = filter_input(INPUT_POST, "ddd", FILTER_SANITIZE_STRING);
@@ -26,6 +26,14 @@ if ($_POST) {
     $numero = filter_input(INPUT_POST, "numero", FILTER_SANITIZE_NUMBER_INT);
     $complemento = filter_input(INPUT_POST, "complemento", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
+    if($senhaValidar != $senha){
+        $_SESSION['cond_cli']['dpassword'] = false;
+        header("Location:cadastro.php");
+    }
+    else{
+        $_SESSION['cond_cli']['dpassword'] = true;
+    }
+
     if (validarNome($nome)) {
         $_SESSION['cond_cli']['nome'] = true;
         $_SESSION['valorcli']['nome'] = $nome;

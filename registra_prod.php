@@ -6,6 +6,7 @@
         $cod = filter_input(INPUT_POST, "cod_ref", FILTER_SANITIZE_NUMBER_INT);
         $prod = filter_input(INPUT_POST, "prod", FILTER_SANITIZE_STRING);
         $file = $_FILES['fileUpload'];
+        $file['name'] = md5(uniqid()) . '-' . time() . '.jpeg';
         $cat = filter_input(INPUT_POST, "cat", FILTER_SANITIZE_STRING);
         $marca = filter_input(INPUT_POST, "marca", FILTER_SANITIZE_STRING);
         $desc = filter_input(INPUT_POST, "desc", FILTER_SANITIZE_STRING);
@@ -49,7 +50,7 @@
         createThumbnail($foto);
         createThumbnail2($foto);
 
-        if (salvar($cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso, $marca, $cat)){
+        if (salvar($cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso, $marca, $cat, $foto)){
             // cria a sessão e define valor a ela
             $_SESSION['msg'] = true;
         }

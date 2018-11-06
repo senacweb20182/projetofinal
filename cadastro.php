@@ -12,6 +12,10 @@ if (isset($_SESSION['valorcli'])) {
         "cpf" => "",
         "ddd" => "",
         "celular" => "",
+        "cep" => "",
+        "rua" => "",
+        "numero" => "",
+        "complemento" => ""
     );
 }
 ?>
@@ -66,14 +70,14 @@ if (isset($_SESSION['valorcli'])) {
                     <div class="row">
                         <div class="col-md-7 mb-3">
                             <label for="nome">Nome Completo</label>
-                            <input type="text" class="form-control" id="nome" name="nome" placeholder="" value=<?= $registro['nome'] ?> >
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="" value='<?= $registro['nome'] ?>' >
                             <div class="invalid-feedback">                                     
                                 Nome válido é obrigatório.
                             </div>
                         </div>
                         <div class="col-md-5 mb-3">
                             <label for="email">E-mail</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="" value=<?= $registro['email'] ?> >
+                            <input type="email" class="form-control" id="email" name="email" placeholder="" value='<?= $registro['email'] ?>' >
                             <div class="invalid-feedback">                                     
                                 E-mail válido é obrigatório.
                             </div>
@@ -89,7 +93,7 @@ if (isset($_SESSION['valorcli'])) {
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" id="login" name="login" placeholder="Digite o Login" value=<?= $registro['login'] ?> >
+                                        <input type="text" class="form-control" id="login" name="login" placeholder="Digite o Login" value='<?= $registro['login'] ?>' >
                                         <div class="invalid-feedback" style="width: 100%;">
                                             Nome de usuário obrigatório.
                                         </div>
@@ -121,21 +125,21 @@ if (isset($_SESSION['valorcli'])) {
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="cpf">CPF</label>
-                            <input id="cpf" class="form-control" maxlength="14" name="cpf" value="" type="text" placeholder="000.000.000-00" value=<?= $registro['cpf'] ?> >
+                            <input id="cpf" class="form-control" maxlength="14" name="cpf" value="" type="text" placeholder="000.000.000-00" value='<?= $registro['cpf'] ?>' >
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="ddd">DDD</label>
-                            <input id="ddd" class="form-control" minlength="2" maxlength="2" name="ddd" value="21" type="tel" placeholder="21" value=<?= $registro['ddd'] ?>>
+                            <input id="ddd" class="form-control" minlength="2" maxlength="2" name="ddd"  type="tel" placeholder="00" value='<?= $registro['ddd'] ?>'>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="celular">Celular</label>
-                            <input id="celular" class="form-control" minlength="9" maxlength="10" name="celular" value="9000-00000" type="tel" placeholder="90000-0000" value=<?= $registro['celular'] ?> >
+                            <input id="celular" class="form-control" minlength="9" maxlength="10" name="celular"  type="tel" placeholder="90000-0000" value='<?= $registro['celular'] ?>' >
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="cep">CEP</label>
-                            <input type="text" class="form-control" placeholder="00000-000" name="cep" id="cep" value=<?= $registro['cep'] ?> size="10" maxlength="9" onblur="pesquisacep(this.value);" />
+                            <input type="text" class="form-control" placeholder="00000-000" name="cep" id="cep" value='<?= $registro['cep'] ?>' size="10" maxlength="9" onblur="pesquisacep(this.value);" />
                             <div class="invalid-feedback">
                                 Favor insira o CEP.
                             </div>
@@ -165,21 +169,21 @@ if (isset($_SESSION['valorcli'])) {
                     <div class="row">
                         <div class="mb-3 col-12">
                             <label for="rua">Logradouro</label>
-                            <input type="text" class="form-control" placeholder="Nome da Av., Rua, Etc.." name="rua" id="rua" value=<?= $registro['rua'] ?> size="10" maxlength="60" />
+                            <input type="text" class="form-control" placeholder="Nome da Av., Rua, Etc.." name="rua" id="rua" value='<?= $registro['rua'] ?>' size="10" maxlength="60" />
                             <div class="invalid-feedback">
                                 Favor insira o Logradouro.
                             </div>
                         </div>
                         <div class="mb-3 col-3">
                             <label for="numero">Número</label>
-                            <input type="text" class="form-control" id="numero" name="numero" value=<?= $registro['numero'] ?> placeholder="Digite o Número " >
+                            <input type="text" class="form-control" id="numero" name="numero" value='<?= $registro['numero'] ?>' placeholder="Digite o Número " >
                             <div class="invalid-feedback">
                                 Favor insira o Número.
                             </div>
                         </div>
                         <div class="mb-3 col-9">
                             <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento (opcional)" value=<?= $registro['complemento'] ?>>
+                            <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento (opcional)" value='<?= $registro['complemento'] ?>'>
                             <div class="invalid-feedback">
                                 Favor insira o Complemento.
                             </div>
@@ -217,8 +221,11 @@ if (isset($_SESSION['valorcli'])) {
                             echo "<p class='text-danger'>campo numero aceita apenas digitos!</p>";
                         if (!$_SESSION['cond_cli']['complemento'])
                             echo "<p class='text-danger'>caracteres não aceitos no campo complemeto!</p>";
-                        if (isset($_SESSION['cond_cli']['cadastro_existente']))
+                        if (isset($_SESSION['cond_cli']['cadastro_existente'])){
                             echo "<p class='text-danger'>usuario já cadastrado!</p>";
+                        }
+                        if (!$_SESSION['cond_cli']['dpassword'])
+                            echo "<p class='text-danger'>confirmação de senha invalida!</p>";
                         unset($_SESSION['cond_cli']);
 
                     }
