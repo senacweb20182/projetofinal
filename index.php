@@ -1,4 +1,11 @@
-<?php include 'cabecalho.php'; ?>
+<?php   include 'cabecalho.php';
+        include 'crud.php'         ?>
+
+<?php
+
+$produtos = produto_index();
+$len = count($produtos);
+?>
 
         <!--comeco do carrosel-->
         <div class="container">
@@ -53,13 +60,16 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/400x400/55595c/fff" alt="Card image cap">
+                                        <?php $prod = $produtos[rand(0, $len-1)]; 
+                                            $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
+                                        ?>
+                                        <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product">Product title</a></h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
+                                            <p class="card-text"><?= $prod['descr']?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block">R$ 1.800,00</p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -70,13 +80,16 @@
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/400x400/55595c/fff" alt="Card image cap">
+                                        <?php $prod = $produtos[rand(0, $len-1)]; 
+                                            $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
+                                        ?>
+                                        <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product">Product title</a></h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
+                                            <p class="card-text"><?= $prod['descr']?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block">R$ 2.350,00</p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -87,13 +100,16 @@
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/400x400/55595c/fff" alt="Card image cap">
+                                        <?php $prod = $produtos[rand(0, $len-1)]; 
+                                            $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
+                                        ?>
+                                        <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product">Product title</a></h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
+                                            <p class="card-text"><?= $prod['descr']?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block">R$ 99.00 </p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -104,16 +120,19 @@
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/400x400/55595c/fff" alt="Card image cap">
+                                        <?php $prod = $produtos[rand(0, $len-1)]; 
+                                            $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
+                                        ?>
+                                        <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product">Product title</a></h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
+                                            <p class="card-text"><?= $prod['descr']?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block">R$ 99.00</p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
                                                 </div>
                                                 <div class="col">
-                                                    <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao Carrinho</a>
+                                                    <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,15 +155,18 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm">
+                            <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/400x400/55595c/fff" alt="Card image cap">
+                                        <?php $prod = $produtos[rand(0, $len-1)]; 
+                                            $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
+                                        ?>
+                                        <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product">Product title</a></h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
+                                            <p class="card-text"><?= $prod['descr']?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block">R$ 99.00</p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -155,13 +177,16 @@
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/400x400/55595c/fff" alt="Card image cap">
+                                        <?php $prod = $produtos[rand(0, $len-1)]; 
+                                            $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
+                                        ?>
+                                        <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product">Product title</a></h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
+                                            <p class="card-text"><?= $prod['descr']?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block">R$ 99.00</p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -172,16 +197,19 @@
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/400x400/55595c/fff" alt="Card image cap">
+                                        <?php $prod = $produtos[rand(0, $len-1)]; 
+                                            $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
+                                        ?>
+                                        <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product">Product title</a></h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
+                                            <p class="card-text"><?= $prod['descr']?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block">R$ 99.00</p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
                                                 </div>
                                                 <div class="col">
-                                                    <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao Carrinho</a>
+                                                    <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,16 +217,19 @@
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/400x400/55595c/fff" alt="Card image cap">
+                                        <?php $prod = $produtos[rand(0, $len-1)]; 
+                                            $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
+                                        ?>
+                                        <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product">Product title</a></h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
+                                            <p class="card-text"><?= $prod['descr']?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block">R$ 99.00</p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
                                                 </div>
                                                 <div class="col">
-                                                    <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao Carrinho</a>
+                                                    <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>

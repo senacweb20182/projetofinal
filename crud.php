@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 require_once 'conexao.php';
 
 function efetuarLogin($login, $senha){ //já funcional com o banco on-line
@@ -80,4 +82,18 @@ function atualizar($prod, $foto, $quant, $price, $custo, $desc, $rev, $id) {
     }
 
     return false;
+}
+
+function produto_index(){
+    $link = abreConexao();
+
+    $query = "select * from produto_index";
+    $result = mysqli_query($link, $query);
+    $arrayIndex = array();
+    while($produto = mysqli_fetch_assoc($result)) {
+        array_push($arrayIndex, $produto);
+    }
+
+    return $arrayIndex;
+
 }

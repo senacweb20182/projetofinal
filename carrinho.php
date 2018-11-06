@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 # Verifica se existe a sessão de carrinho, caso não exista é criada
 if(!isset($_SESSION['carrinho'])) {

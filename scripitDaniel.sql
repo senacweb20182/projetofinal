@@ -88,3 +88,11 @@ BEGIN
 		end if;
 END ;;
 DELIMITER ;
+
+create view produto_index as select
+	a.id_produto as id,
+    a.nome_produto as nome,
+    a.descr_resumido as descr,
+    a.preco_venda as preco,
+    b.img as img
+from tb_produto a join tb_imagem b on a.id_produto = b.tb_produto_id_produto;
