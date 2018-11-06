@@ -97,3 +97,13 @@ create view produto_index as select
     b.img as img,
 	c.nome_cat as categoria
 from tb_produto a join tb_imagem b join tb_categoria on a.id_produto = b.tb_produto_id_produto and c.id_categoria = a.tb_categoria_id_Categoria;
+
+create view produto_view as select
+	a.id_produto as id,
+    a.nome_produto as nome,
+    a.descr_completo as descr,
+    a.preco_venda as preco,
+    b.img as img,
+	c.nome_cat as categoria,
+    d.marca as marca
+from tb_produto a join tb_imagem b join tb_categoria c join tb_marca d on a.id_produto = b.tb_produto_id_produto and c.id_categoria = a.tb_categoria_id_Categoria and d.id_marca = a.tb_marca_id_marca;
