@@ -88,3 +88,6 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
     </td>        
   </tr>
  </table>
+ 
+ ### LICENÇA
+[Leia a licença](LICENSE) **MIT**
