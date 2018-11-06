@@ -97,3 +97,33 @@ function produto_index(){
     return $arrayIndex;
 
 }
+
+function produto_index_cat($cat){
+    $link = abreConexao();
+
+    $query = "select * from produto_index where categoria = '$cat'";
+    $result = mysqli_query($link, $query);
+    $arrayIndex = array();
+    while($produto = mysqli_fetch_assoc($result)) {
+        array_push($arrayIndex, $produto);
+    }
+
+    return $arrayIndex;
+
+}
+
+function getCategoria(){
+    $link = abreConexao();
+
+    $query = "select nome_cat from tb_categoria";
+    $result = mysqli_query($link, $query);
+    $arrayCat = array();
+    while($categoria = mysqli_fetch_assoc($result)) {
+        array_push($arrayCat, $categoria);
+    }
+    foreach($arrayCat as $key => $value){
+        $arrayCat[$key] = ucfirst($value['nome_cat']);
+    }
+    array_multisort($arrayCat, SORT_ASC, SORT_STRING);
+    return $arrayCat;
+}

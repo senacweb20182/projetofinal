@@ -4,6 +4,5 @@
 //não possui nenhuma importância na estrutura do projeto
 
 include_once 'crud.php';
-    var_dump(produto_index());
-    die();
+var_dump(produto_index_cat('eletro'))
 ?>
