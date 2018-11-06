@@ -1,6 +1,8 @@
 <?php
 
     include 'cabecalho.php';
+    if(isset($_SESSION['user'])){
+        if($_SESSION['user']['permissao'] == "admin"){
 
 ?>
 
@@ -137,4 +139,18 @@
     </section>
         </div>
     </section>
+    <?php
+        }
+        else{?>
+            <div class="alert alert-danger" role="alert">
+                Acesso Restrito.
+            </div><?php
+        }
+    }
+    else{ ?>
+        <div class="alert alert-danger" role="alert">
+            Deve efetuar login antes de acessar.
+        </div><?php
+    }
+    ?>
 <?php include 'rodape.php'; ?>
