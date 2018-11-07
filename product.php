@@ -66,7 +66,7 @@
                         <ul class="list-inline">
                             <li class="list-inline-item"><i class="fa fa-truck fa-2x"></i><br/>Rápida Entrega</li>
                             <li class="list-inline-item"><i class="fa fa-credit-card fa-2x"></i><br/>Compra garantida</li>
-                            <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br/>+55 (21) 2518-2050</li>
+                            <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br/><a href="tel:+552125182050">+55 (21) 2518-2050</a></li>
                         </ul>
                     </div>
                     <div class="reviews_product p-3 mb-2 ">

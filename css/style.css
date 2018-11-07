@@ -60,12 +60,13 @@ body {
     border: 1px solid #6c757d;
     color: #6c757d;
 }
+
 .product_rassurance .list-inline {
     margin-bottom: 0;
     text-transform: uppercase;
     text-align: center;
 }
-.product_rassurance .list-inline li:hover {
+  .product_rassurance .list-inline li:hover, .product_rassurance .list-inline a:hover {
     color: #0000FF;
 }
 .reviews_product .fa-star {
@@ -119,7 +120,10 @@ background-color: #0000FF;
     background-color: #fbc820!important;
 }
 
-
+.list-inline-item a, .list-inline-item a:hover, .list-inline-item a:link, .list-inline-item a:visited, .list-inline-item a:active {
+    text-decoration: none;
+    color: #6c757d;
+}
 
 .titulo {
     color: black;
