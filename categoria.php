@@ -71,8 +71,8 @@
                     <div class="card">
                         <img class="card-img-top" src='<?= "uploads" . DIRECTORY_SEPARATOR . "thumbnail" . DIRECTORY_SEPARATOR . $listproduto[$i]['img'] ?>' alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$listproduto[$i]['id'] ?>" title="View Product"><?= $listproduto[$i]['nome'] ?></a></h4>
-                            <p class="card-text"><?= $listproduto[$i]['descr'] ?></p>
+                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$listproduto[$i]['id'] ?>" title="View Product"><?= substr($listproduto[$i]['nome'], 0, 17); ?></a></h4>
+                            <p class="card-text"><?= mb_strimwidth($listproduto[$i]['descr'], 0, 43, " ..."); ?></p>
                             <div class="row">
                                 <div class="col">
                                     <p class="btn btn-danger btn-block"><?= 'R$ ' . number_format($listproduto[$i]['preco'], 2, ',', '.') ?></p>
@@ -121,7 +121,7 @@
                             </li>
 
                         <?php    }
-                                 } 
+                                 }
                                 if($pag+1 < $pags){
                                 $prox_pag = $pag+2;
                                     if(isset($_GET['cat'])){
@@ -134,7 +134,7 @@
                                 <a class="page-link" href='<?="categoria.php?pag=$prox_pag"?>'>Proxima</a>
                             </li>
                             <?php }?>
-                        
+
                         </ul>
                     </nav>
                 </div>

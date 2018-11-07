@@ -5,8 +5,8 @@
 
 * {
     font-family: 'Roboto', sans-serif;
-    
-    
+
+
 }
 
 body {
@@ -28,13 +28,25 @@ body {
 .category_block li a {
     color: #0000FF;
 }
-.add_to_cart_block .price {
-    color: #c01508;
+.add_to_cart_block .product {
+    color: #343a40;
     text-align: center;
     font-weight: bold;
-    font-size: 200%;
+    font-size: 150%;
     margin-bottom: 0;
 }
+
+.add_to_cart_block .price {
+    color: #343a40;
+    text-align: center;
+    font-weight: bold;
+}
+
+.add_to_cart_block .box {
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
 .add_to_cart_block .price_discounted {
     color: #343a40;
     text-align: center;
@@ -76,7 +88,7 @@ background-repeat: no-repeat;
 background-size: 100%;
 background-color: #0000FF;
  color: #00BFFF;
-    
+
 }
 
 .btn-danger:hover {

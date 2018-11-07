@@ -32,18 +32,16 @@
         <div class="col-12 col-lg-6 add_to_cart_block">
             <div class="card bg-light mb-3 pb-4">
                 <div class="card-body">
-                    <p class="price"><?= $prod['preco']?></p>
+                  <p class="product"><?= $prod['nome']?></p>
 
                     <form method="post" action="carrinho.php?acao=add">
-                        <div class="form-group">
-                            <label for="colors">Color</label>
-                            <select class="custom-select" id="colors">
-                                <option selected>Select</option>
-                                <option value="1">Blue</option>
-                                <option value="2">Red</option>
-                                <option value="3">Green</option>
-                            </select>
+                        <div class="form-group box">
+                            <label for="colors" class='float-left'>Preço: </label>
+                            <div class='float-right'>
+                              <p class="price"><?= '&nbsp;R$' . number_format($prod['preco'], 2, ',', '.') ?></p>
+                            </div>
                         </div>
+                        <br><br>
                         <div class="form-group">
                           <label>Quantity :</label>
                           <div class="input-group mb-3">
@@ -66,9 +64,9 @@
                   </form>
                     <div class="product_rassurance">
                         <ul class="list-inline">
-                            <li class="list-inline-item"><i class="fa fa-truck fa-2x"></i><br/>Fast delivery</li>
-                            <li class="list-inline-item"><i class="fa fa-credit-card fa-2x"></i><br/>Secure payment</li>
-                            <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br/>+33 1 22 54 65 60</li>
+                            <li class="list-inline-item"><i class="fa fa-truck fa-2x"></i><br/>Rápida Entrega</li>
+                            <li class="list-inline-item"><i class="fa fa-credit-card fa-2x"></i><br/>Compra garantida</li>
+                            <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br/>+55 (21) 2518-2050</li>
                         </ul>
                     </div>
                     <div class="reviews_product p-3 mb-2 ">
