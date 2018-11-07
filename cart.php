@@ -13,79 +13,54 @@ include_once 'carrinho.php';
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th scope="col"> </th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Available</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-right">Price</th>
-                            <th> </th>
+                        <tr class="text-center">
+                            <th colspan="2" scope="col">Produto</th>
+                            <th scope="col">Preço Unitário</th>
+                            <th scope="col" class="text-center">Quantidade</th>
+                            <th scope="col" class="text-right">Preço Total</th>
+                            <th colspan="2"></th>
                         </tr>
                     </thead>
                     <tbody>
-                      <form action="carrinho.php?acao=atu" method="post">
-                          <tbody>
-                              <?php
+                      <?php
+                        if (count($_SESSION['carrinho']) == 0) {
+                            echo '<tr>
+                                    <td colspan="5">Não há produtos no carrinho!</td>
+                                 </tr>';
+                        } else {
+                        $total = 0;
+                        foreach ($_SESSION['carrinho'] as $id => $qtd) {
 
-                              if (count($_SESSION['carrinho']) == 0) {
-                                  echo '<tr>
-                                          <td colspan="5">Não há produtos no carrinho!</td>
-                                       </tr>';
-                              } else {
-                                  $total = 0;
+                        $ln = buscarId($id);
+                        $foto = $ln['img'];
+                        $nome = $ln['nome'];
+                        $preco = 'R$ ' . number_format($ln['preco'], 2, ',', '.');
+                        $sub = 'R$ ' . number_format($ln['preco'] * $qtd, 2, ',', '.');
 
-
-
-                                  foreach ($_SESSION['carrinho'] as $id => $qtd) {
-
-                                      $ln = buscarId($id);
-                                      $foto = $ln['img'];
-                                      $nome = $ln['nome'];
-                                      $preco = number_format($ln['preco'], 2, ',', '.');
-                                      $sub = number_format($ln['preco'] * $qtd, 2, ',', '.');
-
-                                      $total += $ln['preco'] * $qtd;
-                                      ?>
-                                      <tr>
-                                          <td><?= $foto ?></td>
-                                          <td><?= $nome ?></td>
-                                          <td><?= $preco ?></td>
-                                          <td><?= $sub ?></td>
-                                          <td><input style="width: 50px;" type="number" min="0" name="prod['<?= $id ?>']" value="<?= $qtd ?>"></td>
-                                          <td><a href="carrinho.php?acao=del&id=<?= $id ?>" class="buttoncabe"><i class="fa fa-times"> Remover</i></a></td>
-                                      </tr>
-                                  <?php
-                                  }
-                                  $total = number_format($total, 2, ',', '.');
-                                  ?>
-                                  <tr>
-                                      <td colspan="5"><i class="pull-right">R$: <?= $total ?></i></td>
-                                  </tr>
-              <?php } ?>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Sub-Total</td>
-                            <td class="text-right">255,90 €</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Shipping</td>
-                            <td class="text-right">6,90 €</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>346,90 €</strong></td>
-                        </tr>
+                        $total += $ln['preco'] * $qtd;
+                      ?>
+                      <tr class="text-center">
+                          <td colspan="2"><?= $nome ?></td>
+                          <td><?= $preco ?></td>
+                          <td><input style="width: 50px;" type="number" min="0" name="prod['<?= $id ?>']" value="<?= $qtd ?>"></td>
+                          <td class="text-right"><?= $sub ?></td>
+                          <td class="text-right" colspan="2"><a href="carrinho.php?acao=del&id=1" class="buttoncabe"><i class="fa fa-times"> Remover</i></a></td>
+                      </tr>
+                      <tr>
+                          <td colspan="6">Sub-Total</td>
+                          <td class="text-right">255,90 €</td>
+                      </tr>
+                      <tr>
+                          <td colspan="6">Shipping</td>
+                          <td class="text-right">6,90 €</td>
+                      </tr>
+                      <tr>
+                          <td colspan="6"><strong>Total</strong></td>
+                          <td class="text-right"><strong>346,90 €</strong></td>
+                      </tr>
+                    <?php
+                          }
+                        }?>
                     </tbody>
                 </table>
             </div>

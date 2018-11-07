@@ -58,7 +58,7 @@
                               </div>
                           </div>
                       </div>
-                          <button type="submit" formaction="carrinho.php?acao=add" formmethod="post" name="id" value="<?=$prod['id_produto'] ?>" class="btn btn-success btn-lg btn-block text-uppercase">
+                          <button type="submit" formaction="carrinho.php?acao=add" formmethod="post" name="id_produto" value="<?=$prod['id'] ?>" class="btn btn-success btn-lg btn-block text-uppercase">
                           <i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho
                       </button>
                   </form>
