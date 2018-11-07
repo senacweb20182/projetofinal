@@ -1,0 +1,16 @@
+{
+    "name": "senacrio/projetofinal",
+    "description": "Projeto final",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Turma senac progweb 2018.02",
+            "email": "webtecnologia@gmail.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "phpmailer/phpmailer": "~6.0"
+    }
+}

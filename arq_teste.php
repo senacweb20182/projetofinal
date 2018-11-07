@@ -4,5 +4,5 @@
 //não possui nenhuma importância na estrutura do projeto
 
 include_once 'crud.php';
-var_dump(produto_index_cat('eletro'))
+mail("vinicius.sathler2@gmail.com", "email teste", "Hello World!");
 ?>

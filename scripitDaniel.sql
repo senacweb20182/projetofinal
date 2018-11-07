@@ -107,3 +107,11 @@ create view produto_view as select
 	c.nome_cat as categoria,
     d.marca as marca
 from tb_produto a join tb_imagem b join tb_categoria c join tb_marca d on a.id_produto = b.tb_produto_id_produto and c.id_categoria = a.tb_categoria_id_Categoria and d.id_marca = a.tb_marca_id_marca;
+
+
+create view perfil_usuario as select
+	a.nome as nome,
+    a.senha as senha,
+    a.login as login,
+	b.permissao as permissao
+from tb_usuarios a join tb_perfil b  on a.tb_perfil_id_perfil = b.id_perfil;
