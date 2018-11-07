@@ -9,8 +9,18 @@
     else{
         $listproduto = $listtotal;
     }
-    
+
+    if(isset($_GET['pag'])){
+        $pag = $_GET['pag']-1;
+    }
+    else{
+        $pag = 0;
+    }
+    $prod_pag = 6;
+
     $len = count($listtotal);
+    $len_atual = count($listproduto);
+    $pags = ceil($len_atual/$prod_pag);
     $last = $listtotal[$len-1];
     $arrayCat = getCategoria();
 ?>
@@ -54,17 +64,18 @@
         <div class="col">
             <div class="row">
                 <?php
-                  foreach ($listproduto as  $produto) {
+                  for ($i = $pag*$prod_pag; $i<(($pag+1)*$prod_pag); $i++) {
+                      if(isset($listproduto[$i])){
                 ?>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img class="card-img-top" src="<?= "uploads" . DIRECTORY_SEPARATOR . $produto['img'] ?>" alt="Card image cap">
+                        <img class="card-img-top" src='<?= "uploads" . DIRECTORY_SEPARATOR . "thumbnail" . DIRECTORY_SEPARATOR . $listproduto[$i]['img'] ?>' alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$produto['id'] ?>" title="View Product"><?= $produto['nome'] ?></a></h4>
-                            <p class="card-text"><?= $produto['descr'] ?></p>
+                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$listproduto[$i]['id'] ?>" title="View Product"><?= $listproduto[$i]['nome'] ?></a></h4>
+                            <p class="card-text"><?= $listproduto[$i]['descr'] ?></p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block"><?= "R$ ".$produto['preco'] ?></p>
+                                    <p class="btn btn-danger btn-block"><?= "R$ ".$listproduto[$i]['preco'] ?></p>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="btn btn-warning btn-block">Add to cart</a>
@@ -74,24 +85,56 @@
                     </div>
                 </div>
                 <?php
-                  }
+                  }}
                 ?>
                 <div class="col-12">
                     <nav aria-label="...">
                         <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="categoria.php" tabindex="-1">Anterior</a>
+                        <?php if($pag != 0){
+                                    if(isset($_GET['cat'])){
+                                        $link = "categoria.php?pag=$pag&cat=".$_GET['cat'];
+                                    }
+                                    else{
+                                        $link = "categoria.php?pag=$pag";
+                                    } ?>
+                            <li class="page-item">
+                                <a class="page-link" href='<?="categoria.php?pag=$pag"?>'>Anterior</a>
                             </li>
+                        <?php }
+                                for($i = 1; $i <= $pags; $i++){
+                                    if(isset($_GET['cat'])){
+                                        $link = "categoria.php?pag=$i&cat=".$_GET['cat'];
+                                    }
+                                    else{
+                                        $link = "categoria.php?pag=$i";
+                                    }
+                                    if($i == $pag+1){
+                        ?>
                             <li class="page-item active">
-                                <a class="page-link" href="categoria.php">1<span class="sr-only">(current)</span></a>
+                                <a class="page-link" href='<?=$link?>'><?=$i?><span class="sr-only">(current)</span></a>
                             </li>
+                                <?php
+                                }
+                                else{ ?>
+                            <li class="page-item inactive">
+                                <a class="page-link" href='<?="categoria.php?pag=$i"?>'><?=$i?><span class="sr-only">(current)</span></a>
+                            </li>
+
+                        <?php    }
+                                 } 
+                                if($pag+1 < $pags){
+                                $prox_pag = $pag+2;
+                                    if(isset($_GET['cat'])){
+                                        $link = "categoria.php?pag=$prox_pag&cat=".$_GET['cat'];
+                                    }
+                                    else{
+                                        $link = "categoria.php?pag=$prox_pag";
+                                    }  ?>
                             <li class="page-item">
-                                <a class="page-link" href="categoria_p2.php">2</a>
+                                <a class="page-link" href='<?="categoria.php?pag=$prox_pag"?>'>Proxima</a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="categoria_p3.php">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="categoria_p2.php">Proxima</a>
-                            </li>
+                            <?php }?>
+                        
                         </ul>
                     </nav>
                 </div>
