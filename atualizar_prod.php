@@ -1,8 +1,11 @@
 <?php
-
     include 'cabecalho.php';
+    include 'crud.php';
     if(isset($_SESSION['user'])){
-        if($_SESSION['user']['permissao'] == "admin"){
+        if($_SESSION['user']['permissao'] == "admin" and isset($_GET['prodid'])){
+            if($prod = buscarId($_GET['prodid'])){
+                $_SESSION['prodid'] = $_GET['prodid'];
+                $_SESSION['prodimg'] = $prod['img'];
 
 ?>
 
@@ -23,16 +26,16 @@
         <div class="container">
             <div class="row col-xs-6 col-xs-offset-3">
                 <fieldset>
-                    <legend>Registro de Produto</legend>
-                    <form action="registra_prod.php" method="post" enctype='multipart/form-data'>
+                    <legend>Atualização de Produto</legend>
+                    <form action="atualizar_prod_arq.php" method="post" enctype='multipart/form-data'>
                         <div class="form-group">
                             <label for="prod">Código de referência</label>
-                            <input type="number" class="form-control"
+                            <input type="number" class="form-control" value = '<?=$prod['cod_ref'] ?>'
                             name="cod_ref" id="cod_ref"  required>
                         </div>
                         <div class="form-group">
                             <label for="prod">Nome do produto</label>
-                            <input type="text" class="form-control"
+                            <input type="text" class="form-control" value = '<?=$prod['nome_produto'] ?>'
                             name="prod" id="prod"  required>
                         </div>
                         <div class="form-group col-xs-6">
@@ -46,56 +49,56 @@
 		                </div>
                     <div class="form-group col-xs-4">
                         <label for="cat">Categoria</label>
-                        <input type="text" class="form-control"
+                        <input type="text" class="form-control" value = '<?=$prod['nome_cat'] ?>'
                         name="cat" id="cat"  required>
                     </div>
                     <div class="form-group col-xs-4">
                         <label for="cat">Marca</label>
-                        <input type="text" class="form-control"
+                        <input type="text" class="form-control" value = '<?=$prod['marca'] ?>'
                         name="marca" id="marca"  required>
                     </div>
                         <div class="form-group col-xs-4">
                             <label for="quant">Quantidade</label>
-                            <input type="number" class="form-control"
+                            <input type="number" class="form-control" value = '<?=$prod['quant'] ?>'
                             name="quant" id="quant"  required>
                         </div>
                         <div class="form-group col-xs-4">
                             <label for="price">Preço</label>
-                            <input type="number" class="form-control"
+                            <input type="number" class="form-control" value = '<?=$prod['preco_venda'] ?>'
                             name="price" id="price"  required>
                         </div>
 
                         <br><br><div class="form-group">
                             <label for="desc">Descrição completa do produto</label></br>
-                            <textarea id="desc" name="desc" rows="5" maxlength="300" cols="50"></textarea>
+                            <textarea id="desc" name="desc" rows="5" maxlength="300" cols="50"><?=$prod['descr'] ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="rev">Descrição resumida do produto</label></br>
-                            <textarea id="rev" name="rev" rows="5" maxlength="150" cols="50"></textarea>
+                            <textarea id="rev" name="rev" rows="5" maxlength="150" cols="50"><?=$prod['descr_resumido'] ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="prod">Altura</label>
-                            <input type="number" class="form-control"
+                            <input type="number" class="form-control" value = '<?=$prod['altura'] ?>'
                             name="alt" id="alt"  required>
                         </div>
                         <div class="form-group">
                             <label for="prod">largura</label>
-                            <input type="number" class="form-control"
+                            <input type="number" class="form-control" value = '<?=$prod['largura'] ?>'
                             name="larg" id="larg"  required>
                         </div>
                         <div class="form-group">
                             <label for="prod">Comprimento</label>
-                            <input type="number" class="form-control"
+                            <input type="number" class="form-control" value = '<?=$prod['comprimento'] ?>'
                             name="comp" id="comp"  required>
                         </div>
                         <div class="form-group">
                             <label for="prod">Diamêtro</label>
-                            <input type="number" class="form-control"
+                            <input type="number" class="form-control" value = '<?=$prod['diametro'] ?>'
                             name="diam" id="diam"  required>
                         </div>
                         <div class="form-group">
                             <label for="prod">Peso</label>
-                            <input type="number" class="form-control"
+                            <input type="number" class="form-control" value = '<?=$prod['peso'] ?>'
                             name="peso" id="peso"  required>
                         </div>
                         <div>
@@ -106,30 +109,17 @@
                                     if($_SESSION['msg']) {
 
                             ?>
-                            <p class="pull-right text-success">Dados gravados com sucesso</p>
+                            <p class="pull-right text-success">Dados atualizados com sucesso</p>
                             <?php
                                     } else {
                             ?>
-                            <p class="pull-right text-danger">Erro ao gravar</p>
+                            <p class="pull-right text-danger">Erro ao atualizar</p>
                             <?php
                                     }
                                 }
                                 # removem a sessão
                                 unset($_SESSION['msg']);
                             ?>
-
-                        <?php   if(isset($_SESSION['cond_prod']['cadastro_existente'])){
-                            
-                                    if(!$_SESSION['cond_prod']['cadastro_existente']){ 
-                        ?>
-                                        <div class="alert alert-danger" role="alert">
-                                            Esse item ja existe!
-                                        </div>
-                        <?php       
-                                    }
-                                    unset($_SESSION['cond_prod']['cadastro_existente']);
-                                }
-                        ?>
 
                         </div>
                     </form>
@@ -140,6 +130,17 @@
         </div>
     </section>
     <?php
+            }
+            else{ ?>
+            <div class="alert alert-danger" role="alert">
+                Produto não existe.
+            </div> <?php
+            }
+        }
+        else if(!isset($_GET['prodid'])){ ?>
+            <div class="alert alert-danger" role="alert">
+                Escolha um produto.
+            </div><?php
         }
         else{?>
             <div class="alert alert-danger" role="alert">

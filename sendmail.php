@@ -40,22 +40,22 @@ $mail->Username = "aula.sendmail@gmail.com";
 $mail->Password = "123qwe..";
 
 // Quem está enviando
-$mail->setFrom('aula.sendmail@gmail.com', 'Sistema Senac de Email');
+$mail->setFrom('webtecnologia@gmail.com', 'Sistema Senac de Email');
 
 // Responda para (não obrigatório)
 $mail->addReplyTo('prof.lpjunior@gmail.com', 'Luis Lessa');
 
 // Define quem vai receber o email
-$mail->addAddress('vinicius.sathler2@gmail.com', 'Vinicius Sathler');
+$mail->addAddress($_SESSION['valorcli']['email'], $_SESSION['valorcli']['nome']);
 
 // Define o titulo do email
-$mail->Subject = 'Aula de envio de email';
+$mail->Subject = $_SESSION['valorcli']['nome'].", Bem vindo a WEB TECNOLOGIA";
 
 // Ler o arquivo HTML e converter para o corpo do email
-$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
+$mail->msgHTML(file_get_contents('welcome.php'), __DIR__);
 
 // (opcional) é o corpo do email alternativo, para clients que não tem suporte HTML
-$mail->AltBody = 'Mensagem de teste para aula de sendmail';
+$mail->AltBody = 'Mensagem de boas vindas a WEB TECNOLOGIA';
 
 // Para anexar arquivos (foto, docs, xml, etc..)
 #$mail->addAttachment('images/phpmailer_mini.png');

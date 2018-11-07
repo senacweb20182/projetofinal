@@ -1,5 +1,6 @@
 <?php
 include 'cabecalho.php';
+if(!isset($_SESSION['user'])){
 
 if (isset($_SESSION['valorcli'])) {
     $registro = $_SESSION['valorcli'];
@@ -100,9 +101,9 @@ if (isset($_SESSION['valorcli'])) {
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="senha">Senha </label>
+                                    <label for="senha">Senha (8 ou mais caracteres)</label>
                                     <div class="input-group">                                        
-                                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha" value="">                                        
+                                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha" value="" minlength=8>                                        
                                     </div>
                                     <div id="senhaBarra" class="progress" style="display: none;">
                                         <div id="senhaForca" class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
@@ -112,7 +113,7 @@ if (isset($_SESSION['valorcli'])) {
                                 <div class="col-md-4 mb-3">
                                     <label for="senhaValidar">Confirmar Senha</label>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" id="senhaValidar" name="senhaValidar" placeholder="Digite a senha" value="">
+                                        <input type="password" class="form-control" id="senhaValidar" name="senhaValidar" placeholder="Digite a senha" value="" minlength=8>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="fa fa-eye-slash" type="button" id="show_password" name="show_password"  aria-hidden="true" ></i></span>
                                         </div>                                        
@@ -262,6 +263,10 @@ if (isset($_SESSION['valorcli'])) {
     </div> 
     <br>
     <?php
+    }
+    else{
+        header("Location: pagadmin.php");
+    }
     include 'rodape.php';
     ?> 
 

@@ -89,6 +89,44 @@ BEGIN
 END ;;
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS atualiza_produto;
+DELIMITER ;;
+CREATE PROCEDURE atualiza_produto(pid int(11), pcod int(11), pnome varchar(45), pqtd int(11), pvenda float, pdesc text,
+									pdescc text, pa varchar(4), pl varchar(4), pc varchar(4), pd varchar(4), 
+                                    pp varchar(4), pmarca varchar(50), pcategoria varchar(50), pfoto varchar(200))
+BEGIN
+	DECLARE teste bool DEFAULT 0;
+    DECLARE  CONTINUE handler for sqlexception set teste = 1;
+    start transaction;
+		insert into tb_marca(marca) select * from (select pmarca ) AS tmp where not exists( select marca from tb_marca where marca = pmarca) LIMIT 1;
+		insert into tb_categoria(nome_cat) select * from (select pcategoria ) AS tmp where not exists( select nome_cat from tb_categoria where nome_cat = pcategoria) LIMIT 1;
+		SET @CID = (select id_categoria from tb_categoria where nome_cat = pcategoria );
+		SET @MID = (select id_marca from tb_marca where marca = pmarca );
+        UPDATE tb_produto SET
+            cod_ref = pcod,
+			nome_produto = pnome,
+			quant = pqtd,
+			preco_venda = pvenda,
+			descr_resumido = pdesc,
+			descr_completo = pdescc,
+			altura = pa,
+			largura = pl,
+			comprimento = pc,
+			diametro = pd,
+			peso = pp,
+            tb_marca_id_marca = @MID,
+            tb_categoria_id_Categoria = @CID
+			WHERE id_produto = pid;
+		update tb_imagem set img = pfoto where tb_produto_id_Produto = pid;
+        if teste then
+			select false;
+			rollback;
+		else
+			commit;
+		end if;
+END ;;
+DELIMITER ;
+
 create view produto_index as select
 	a.id_produto as id,
     a.nome_produto as nome,
@@ -115,3 +153,22 @@ create view perfil_usuario as select
     a.login as login,
 	b.permissao as permissao
 from tb_usuarios a join tb_perfil b  on a.tb_perfil_id_perfil = b.id_perfil;
+
+create view produto_full as select
+	a.id_produto as id_produto,
+    a.cod_ref as cod_ref,
+    a.nome_produto as nome_produto,
+    a.quant as quant,
+    a.preco_venda as preco_venda,
+    a.descr_resumido as descr_resumido,
+    a.descr_completo as descr,
+    a.altura as altura,
+    a.largura as largura,
+    a.comprimento as comprimento,
+    a.diametro as diametro,
+    a.peso as peso,
+    b.img as img,
+	c.nome_cat as nome_cat,
+    d.marca as marca
+from tb_produto a join tb_imagem b join tb_categoria c join tb_marca d on 
+a.id_produto = b.tb_produto_id_produto and c.id_categoria = a.tb_categoria_id_Categoria and d.id_marca = a.tb_marca_id_marca;

@@ -1,8 +1,20 @@
 <?php
+//gambiarra para remover categorias vazias do banco
 
-//este arquivo serve apenas para testar o retorno de certas funções, 
-//não possui nenhuma importância na estrutura do projeto
+/*include 'conexao.php';
+include 'crud.php';
 
-include_once 'crud.php';
-mail("vinicius.sathler2@gmail.com", "email teste", "Hello World!");
+
+$arrayCat = getCategoria();
+foreach($arrayCat as $cat){
+    if(count(produto_index_cat($cat)) == 0){
+        $query = "delete from tb_categoria where nome_cat = '$cat'";
+        $result = mysqli_query($conexao, $query);
+    }
+}*/
+include 'crud.php';
+var_dump(produto_index());
+die();
+
+
 ?>

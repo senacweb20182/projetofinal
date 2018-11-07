@@ -74,6 +74,17 @@ $len = count($produtos);
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
+                                                <?php
+                                                if(isset($_SESSION['user'])){
+                                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                                ?>
+                                                        <div class="col">
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                                        </div>
+                                                <?php
+                                                    }
+                                                }    
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -94,6 +105,17 @@ $len = count($produtos);
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
+                                                <?php
+                                                if(isset($_SESSION['user'])){
+                                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                                ?>
+                                                        <div class="col">
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                                        </div>
+                                                <?php
+                                                    }
+                                                }    
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -114,6 +136,17 @@ $len = count($produtos);
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
+                                                <?php
+                                                if(isset($_SESSION['user'])){
+                                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                                ?>
+                                                        <div class="col">
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                                        </div>
+                                                <?php
+                                                    }
+                                                }    
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -134,6 +167,17 @@ $len = count($produtos);
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
+                                                <?php
+                                                if(isset($_SESSION['user'])){
+                                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                                ?>
+                                                        <div class="col">
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                                        </div>
+                                                <?php
+                                                    }
+                                                }    
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -171,6 +215,17 @@ $len = count($produtos);
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
+                                                <?php
+                                                if(isset($_SESSION['user'])){
+                                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                                ?>
+                                                        <div class="col">
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                                        </div>
+                                                <?php
+                                                    }
+                                                }    
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -191,6 +246,17 @@ $len = count($produtos);
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
+                                                <?php
+                                                if(isset($_SESSION['user'])){
+                                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                                ?>
+                                                        <div class="col">
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                                        </div>
+                                                <?php
+                                                    }
+                                                }    
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -211,6 +277,17 @@ $len = count($produtos);
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
+                                                <?php
+                                                if(isset($_SESSION['user'])){
+                                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                                ?>
+                                                        <div class="col">
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                                        </div>
+                                                <?php
+                                                    }
+                                                }    
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -231,6 +308,17 @@ $len = count($produtos);
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                                 </div>
+                                                <?php
+                                                if(isset($_SESSION['user'])){
+                                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                                ?>
+                                                        <div class="col">
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                                        </div>
+                                                <?php
+                                                    }
+                                                }    
+                                                ?>
                                             </div>
                                         </div>
                                     </div>

@@ -61,12 +61,26 @@ function buscar($prod) {
 function buscarId($id) {
     $link = abreConexao();
 
-    $query = "select * from produto_view where id = $id";
+    $query = "select * from produto_full where id_produto = $id";
     $result = mysqli_query($link, $query);
     if(mysqli_error($link)) {
         $_SESSION['error'] = 'falha ao gravar';
     }
     return mysqli_fetch_assoc($result);
+}
+
+function atualizarProduto($id, $cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso, $marca, $cat, $foto) {
+    $link = abreConexao();
+    $query = "call atualiza_produto('$id','$cod','$prod','$quant', '$price', '$desc', '$rev', '$alt', '$larg', '$comp', '$diam', '$peso', '$marca', '$cat', '$foto')";
+    if ($result = mysqli_query($link, $query)) {
+        $result = mysqli_fetch_assoc($result);
+        if(isset($result['FALSE'])){
+            $_SESSION['cond_prod']['atualizacao'] = true;
+            return false;
+        }
+        return true;
+    }
+    return false;
 }
 
 function atualizar($prod, $foto, $quant, $price, $custo, $desc, $rev, $id) {

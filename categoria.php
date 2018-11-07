@@ -85,7 +85,7 @@
                                     if($_SESSION['user']['permissao'] == "admin"){ 
                                 ?>
                                     <div class="col">
-                                    <a href="#" class="btn btn-warning btn-block">Editar</a>
+                                    <a href='<?="atualizar_prod.php?prodid=".$listproduto[$i]['id']?>' class="btn btn-warning btn-block">Editar</a>
                                     </div>
                                 <?php
                                     }} 
