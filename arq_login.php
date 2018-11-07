@@ -9,12 +9,7 @@
     }
     else{
         if($_SESSION['user'] = efetuarLogin($login, $senha)){
-            if($_SESSION['user']['permissao'] == "admin"){
-                header("Location: cadastro_prod.php");
-            }
-            else{
-                header("Location: index.php");
-            }
+                header("Location: pagadmin.php");
         }
         else{
             $_SESSION['login_error'] = true;

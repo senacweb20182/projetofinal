@@ -80,6 +80,16 @@
                                 <div class="col">
                                     <a href="#" class="btn btn-warning btn-block">Add to cart</a>
                                 </div>
+                                <?php
+                                    if(isset($_SESSION['user'])){
+                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                ?>
+                                    <div class="col">
+                                    <a href="#" class="btn btn-warning btn-block">Editar</a>
+                                    </div>
+                                <?php
+                                    }} 
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -144,4 +154,4 @@
     </div>
 </div>
 
-<?php include 'rodape.php';
+<?php include 'rodape.php'; ?>

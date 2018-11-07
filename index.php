@@ -65,11 +65,11 @@ $len = count($produtos);
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
-                                            <p class="card-text"><?= $prod['descr']?></p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".number_format($prod['preco'], 2, ',', '.')?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -85,11 +85,11 @@ $len = count($produtos);
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
-                                            <p class="card-text"><?= $prod['descr']?></p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".number_format($prod['preco'], 2, ',', '.')?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -105,11 +105,11 @@ $len = count($produtos);
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
-                                            <p class="card-text"><?= $prod['descr']?></p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".number_format($prod['preco'], 2, ',', '.')?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -125,11 +125,11 @@ $len = count($produtos);
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
-                                            <p class="card-text"><?= $prod['descr']?></p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".number_format($prod['preco'], 2, ',', '.')?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -162,11 +162,11 @@ $len = count($produtos);
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
-                                            <p class="card-text"><?= $prod['descr']?></p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".number_format($prod['preco'], 2, ',', '.')?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -182,11 +182,11 @@ $len = count($produtos);
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
-                                            <p class="card-text"><?= $prod['descr']?></p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".number_format($prod['preco'], 2, ',', '.')?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -202,11 +202,11 @@ $len = count($produtos);
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
-                                            <p class="card-text"><?= $prod['descr']?></p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".number_format($prod['preco'], 2, ',', '.')?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
@@ -222,11 +222,11 @@ $len = count($produtos);
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= $prod['nome']?></a></h4>
-                                            <p class="card-text"><?= $prod['descr']?></p>
+                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-light btn-block"><?= "R$ ".$prod['preco']?></p>
+                                                    <p class="btn btn-light btn-block"><?= "R$ ".number_format($prod['preco'], 2, ',', '.')?></p>
                                                 </div>
                                                 <div class="col">
                                                     <a href="cart.php" class="btn btn-warning btn-block">Adicionar ao carrinho</a>

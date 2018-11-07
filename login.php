@@ -2,7 +2,11 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<?php include 'cabecalho.php'; ?>
+
+<?php 	
+		include 'cabecalho.php';
+		if(!(isset($_SESSION['user']))){
+?>
 
 <!DOCTYPE html>
 <html>
@@ -25,11 +29,6 @@
             <div class="card" >
 			<div class="card-header" >
 				<h3>Login</h3>
-				<div class="d-flex justify-content-end social_icon">
-                                    <span><a href="#"><i class="fab fa-facebook-square"></i></a></span>
-					<span><a href="#"><i class="fab fa-google-plus-square"></i></a></span>
-					<span><a href="#"><i class="fab fa-twitter-square"></i></a></span>
-				</div>
 			</div>
 			<div class="card-body">
 				<form action="arq_login.php" method="POST">
@@ -88,4 +87,9 @@
 </div>
 </body>
 </html>
-<?php include 'rodape.php';
+<?php include 'rodape.php'; 
+		}
+		else{
+			header("Location: pagadmin.php");	
+		}
+?>
