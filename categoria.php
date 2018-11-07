@@ -57,7 +57,7 @@
                     <img class="img-fluid" src="<?= "uploads" . DIRECTORY_SEPARATOR . $last['img'] ?>"/>
                     <h5 class="card-title"><?= $last['nome']?></h5>
                     <p class="card-text"><?= $last['descr']?></p>
-                    <p class="bloc_left_price"><?= "R$ ".$last['preco']?></p>
+                    <p class="bloc_left_price"><?= 'R$ ' . number_format($last['preco'], 2, ',', '.') ?></p>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
                   for ($i = $pag*$prod_pag; $i<(($pag+1)*$prod_pag); $i++) {
                       if(isset($listproduto[$i])){
                 ?>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4" style="margin-bottom: 2%">
                     <div class="card">
                         <img class="card-img-top" src='<?= "uploads" . DIRECTORY_SEPARATOR . "thumbnail" . DIRECTORY_SEPARATOR . $listproduto[$i]['img'] ?>' alt="Card image cap">
                         <div class="card-body">
@@ -75,7 +75,7 @@
                             <p class="card-text"><?= $listproduto[$i]['descr'] ?></p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block"><?= "R$ ".$listproduto[$i]['preco'] ?></p>
+                                    <p class="btn btn-danger btn-block"><?= 'R$ ' . number_format($listproduto[$i]['preco'], 2, ',', '.') ?></p>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="btn btn-warning btn-block">Add to cart</a>
