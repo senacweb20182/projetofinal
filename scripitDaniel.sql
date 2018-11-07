@@ -147,12 +147,14 @@ create view produto_view as select
 from tb_produto a join tb_imagem b join tb_categoria c join tb_marca d on a.id_produto = b.tb_produto_id_produto and c.id_categoria = a.tb_categoria_id_Categoria and d.id_marca = a.tb_marca_id_marca;
 
 
+drop view if exists perfil_usuario;
 create view perfil_usuario as select
 	a.nome as nome,
     a.senha as senha,
     a.login as login,
-	b.permissao as permissao
-from tb_usuarios a join tb_perfil b  on a.tb_perfil_id_perfil = b.id_perfil;
+	b.permissao as permissao,
+    c.cep as cep
+from tb_usuarios a join tb_perfil b join tb_endereco c on a.tb_perfil_id_perfil = b.id_perfil and a.id_usuario = c.tb_usuarios_id_usuario;
 
 create view produto_full as select
 	a.id_produto as id_produto,

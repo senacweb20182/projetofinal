@@ -3,6 +3,9 @@
 
 include_once 'buscaidprod.php';
 include_once 'carrinho.php';
+include_once 'frete.php';
+define("CEP", "20080006");
+
 
 ?>
 
@@ -28,39 +31,58 @@ include_once 'carrinho.php';
                                     <td colspan="5">Não há produtos no carrinho!</td>
                                  </tr>';
                         } else {
-                        $total = 0;
-                        foreach ($_SESSION['carrinho'] as $id => $qtd) {
+                            $total = 0;
+                            $totalfrete = 0;
+                            foreach ($_SESSION['carrinho'] as $id => $qtd){
+                                $ln = buscarId($id);
+                                $size = getSize($id);
+                                if(isset($_SESSION['user'])){
+                                    $frete = calculaFrete("PAC", CEP, $_SESSION['user']['cep'], $size['peso'], $size['altura'], $size['largura'], $size['comprimento'])*$qtd;
+                                }
+                                else{
+                                    $frete = 0;
+                                }
+                                $totalfrete += $frete;
+                                $foto = $ln['img'];
+                                $nome = $ln['nome_produto'];
+                                $preco = 'R$ ' . number_format($ln['preco_venda'], 2, ',', '.');
+                                $sub = 'R$ ' . number_format($ln['preco_venda'] * $qtd, 2, ',', '.');
 
-                        $ln = buscarId($id);
-                        $foto = $ln['img'];
-                        $nome = $ln['nome'];
-                        $preco = 'R$ ' . number_format($ln['preco'], 2, ',', '.');
-                        $sub = 'R$ ' . number_format($ln['preco'] * $qtd, 2, ',', '.');
-
-                        $total += $ln['preco'] * $qtd;
-                      ?>
-                      <tr class="text-center">
-                          <td colspan="2"><?= $nome ?></td>
-                          <td><?= $preco ?></td>
-                          <td><input style="width: 50px;" type="number" min="0" name="prod['<?= $id ?>']" value="<?= $qtd ?>"></td>
-                          <td class="text-right"><?= $sub ?></td>
-                          <td class="text-right" colspan="2"><a href="carrinho.php?acao=del&id=1" class="buttoncabe"><i class="fa fa-times"> Remover</i></a></td>
-                      </tr>
-                      <tr>
-                          <td colspan="6">Sub-Total</td>
-                          <td class="text-right">255,90 €</td>
-                      </tr>
-                      <tr>
-                          <td colspan="6">Shipping</td>
-                          <td class="text-right">6,90 €</td>
-                      </tr>
-                      <tr>
-                          <td colspan="6"><strong>Total</strong></td>
-                          <td class="text-right"><strong>346,90 €</strong></td>
-                      </tr>
-                    <?php
-                          }
-                        }?>
+                                $total += $ln['preco_venda'] * $qtd;
+                                ?>
+                                <tr class="text-center">
+                                <td colspan="2"><?= $nome ?></td>
+                                <td><?= $preco ?></td>
+                                <td><input style="width: 50px;" type="number" min="0" name="prod['<?= $id ?>']" value="<?= $qtd ?>"></td>
+                                <td class="text-right"><?= $sub ?></td>
+                                <td class="text-right" colspan="2"><a href="carrinho.php?acao=del&id=1" class="buttoncabe"><i class="fa fa-times"> Remover</i></a></td>
+                                </tr>
+                                <tr>
+                                <?php
+                            } 
+                            ?>
+                            <td colspan="6">Sub-Total</td>
+                            <td class="text-right"><?='R$ ' . number_format($total, 2, ',', '.') ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">Frete</td>
+                            <td class="text-right"><?php 
+                            if(isset($_SESSION['user'])){ 
+                                echo 'R$ ' . number_format($totalfrete, 2, ',', '.');
+                            }
+                            else{ ?>
+                                Precisa logar para calcular frete.
+                            <?php
+                            }
+                            ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6"><strong>Total</strong></td>
+                            <td class="text-right"><strong><?='R$ ' . number_format($totalfrete + $total, 2, ',', '.')?></strong></td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

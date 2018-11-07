@@ -7,10 +7,9 @@
 
         $id = $_GET['id'];
 
-
         if(buscarId($id)) {
             // cria a sessão e define valor a ela
-            $_SESSION['id'] = buscarId($id);
+            $_SESSION['prod'] = buscarId($id);
             
             header("location:product.php");
             exit;

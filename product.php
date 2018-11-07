@@ -1,15 +1,14 @@
 <!DOCTYPE html>
     <?php include 'cabecalho.php';
 
-    if(isset($_SESSION['id'])) {
-        $prod = $_SESSION['id'];
+    if(isset($_SESSION['prod'])) {
+        $prod = $_SESSION['prod'];
 
 
     } else {
         $_SESSION['msg'] = false;
         header:("Location: index.php");
     }
-
      ?>
 
 <div class="container">
@@ -20,9 +19,7 @@
             <div class="card bg-light mb-3 pb-1">
                 <div class="card-body">
                   <a href="" data-toggle="modal" data-target="#productModal">
-
                       <img id="product_photo" data-zoom-image="uploads\<?=$prod['img']?>" width="800" height="800" class="img-fluid" src="uploads\img\<?=$prod['img']?>" />
-
                   </a>
                 </div>
             </div>
@@ -32,13 +29,13 @@
         <div class="col-12 col-lg-6 add_to_cart_block">
             <div class="card bg-light mb-3 pb-4">
                 <div class="card-body">
-                  <p class="product"><?= $prod['nome']?></p>
+                  <p class="product"><?= $prod['nome_produto']?></p>
 
                     <form method="post" action="carrinho.php?acao=add">
                         <div class="form-group box">
                             <label for="colors" class='float-left'>Preço: </label>
                             <div class='float-right'>
-                              <p class="price"><?= '&nbsp;R$' . number_format($prod['preco'], 2, ',', '.') ?></p>
+                              <p class="price"><?= '&nbsp;R$' . number_format($prod['preco_venda'], 2, ',', '.') ?></p>
                             </div>
                         </div>
                         <br><br>
@@ -52,13 +49,13 @@
                               </div>
                               <input type="text" class="form-control"  id="quantity" name="quantity" min="1" max="100" value="1">
                               <div class="input-group-append">
-                                  <button type="submit" formaction="carrinho.php?acao=atu" formmethod="post" name="id" value="<?=$prod['id_produto'] ?>" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                  <button type="submit" formaction="carrinho.php?acao=atu" formmethod="post" name="quant" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                                       <i class="fa fa-plus"></i>
                                   </button>
                               </div>
                           </div>
                       </div>
-                          <button type="submit" formaction="carrinho.php?acao=add" formmethod="post" name="id_produto" value="<?=$prod['id'] ?>" class="btn btn-success btn-lg btn-block text-uppercase">
+                          <button type="submit" formaction="carrinho.php?acao=add" formmethod="post" name="id_produto" value="<?=$prod['id_produto'] ?>" class="btn btn-success btn-lg btn-block text-uppercase">
                           <i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho
                       </button>
                   </form>

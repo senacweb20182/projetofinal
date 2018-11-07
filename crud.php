@@ -8,7 +8,7 @@ require_once 'conexao.php';
 function efetuarLogin($login, $senha){ //já funcional com o banco on-line
     $link = abreConexao();
 
-    $query = "select nome, permissao from perfil_usuario where login = '$login' and senha = '$senha'";
+    $query = "select nome, permissao, cep from perfil_usuario where login = '$login' and senha = '$senha'";
     $result = mysqli_query($link, $query);
 
     $result = mysqli_fetch_assoc($result);
@@ -140,4 +140,16 @@ function getCategoria(){
     }
     array_multisort($arrayCat, SORT_ASC, SORT_STRING);
     return $arrayCat;
+}
+
+function getSize($id){
+    $link = abreConexao();
+    $query = "select altura, largura, comprimento, peso from tb_produto  where id_produto = $id";
+    $result = mysqli_query($link, $query);
+    if($result = mysqli_fetch_assoc($result)){
+        return $result;
+    }
+    else{
+        return false;
+    }
 }

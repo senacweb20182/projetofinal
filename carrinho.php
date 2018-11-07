@@ -2,6 +2,12 @@
 if(!isset($_SESSION)){
     session_start();
 }
+if(isset($_POST["quantity"])){
+    $quant = $_POST["quantity"];
+}
+else{
+    $quant = 1;
+}
 
 # Verifica se existe a sessão de carrinho, caso não exista é criada
 if(!isset($_SESSION['carrinho'])) {
@@ -14,9 +20,9 @@ if(isset($_GET['acao'])) {
     if($_GET['acao'] == 'add') {
         $id = intval($_POST['id_produto']);
         if(!isset($_SESSION['carrinho'][$id])) {
-            $_SESSION['carrinho'][$id] = 1;
+            $_SESSION['carrinho'][$id] = $quant;
         } else {
-            $_SESSION['carrinho'][$id] += 1;
+            $_SESSION['carrinho'][$id] += $quant;
         }
 
         header("Location: cart.php");
