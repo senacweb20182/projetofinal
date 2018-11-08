@@ -69,19 +69,7 @@ function buscarId($id) {
     return mysqli_fetch_assoc($result);
 }
 
-function atualizarProduto($id, $cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso, $marca, $cat, $foto) {
-    $link = abreConexao();
-    $query = "call atualiza_produto('$id','$cod','$prod','$quant', '$price', '$desc', '$rev', '$alt', '$larg', '$comp', '$diam', '$peso', '$marca', '$cat', '$foto')";
-    if ($result = mysqli_query($link, $query)) {
-        $result = mysqli_fetch_assoc($result);
-        if(isset($result['FALSE'])){
-            $_SESSION['cond_prod']['atualizacao'] = true;
-            return false;
-        }
-        return true;
-    }
-    return false;
-}
+
 
 function atualizar($prod, $foto, $quant, $price, $custo, $desc, $rev, $id) {
     $link = abreConexao();
@@ -124,6 +112,28 @@ function produto_index_cat($cat){
 
     return $arrayIndex;
 
+}
+
+function atualizarProduto($id, $cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso, $marca, $cat, $foto) {
+    $link = abreConexao();
+    $query = "call atualiza_produto('$id','$cod','$prod','$quant', '$price', '$desc', '$rev', '$alt', '$larg', '$comp', '$diam', '$peso', '$marca', '$cat', '$foto')";
+    if ($result = mysqli_query($link, $query)) {
+        $result = mysqli_fetch_assoc($result);
+        if(isset($result['FALSE'])){
+            $_SESSION['cond_prod']['atualizacao'] = true;
+            return false;
+        }
+        $arrayCat = getCategoria();
+        foreach($arrayCat as $cat){
+            var_dump(produto_index_cat($cat));
+            if(count(produto_index_cat($cat)) == 0){
+                $query = "delete from tb_categoria where nome_cat = '$cat'";
+                $result = mysqli_query($link, $query);
+            }
+        }
+        return true;
+    }
+    return false;
 }
 
 function getCategoria(){

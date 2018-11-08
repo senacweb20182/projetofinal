@@ -2,14 +2,12 @@
         include 'crud.php'       ?>
 
 <?php
+    if(!isset($_SESSION['prod'])) {
+        $_SESSION['prod'] = array(
+          "prod1" => array("", "", "", "", "", ""));
+      }
+    $listproduto = $_SESSION['prod'];
     $listtotal = produto_index();
-    if(isset($_GET['cat'])){
-        $listproduto = produto_index_cat($_GET['cat']);
-    }
-    else{
-        $listproduto = $listtotal;
-    }
-
     if(isset($_GET['pag'])){
         $pag = $_GET['pag']-1;
     }
@@ -71,49 +69,88 @@
         <div class="col">
             <div class="row">
                 <?php
-                  #session_start();
-
-                  if(!isset($_SESSION['prod'])) {
-                    $_SESSION['prod'] = array(
-                      "prod1" => array("", "", "", "", "", ""));
-                  }
-                  $listproduto = $_SESSION['prod'];
-                  foreach ($listproduto as  $produto) {
+            for ($i = $pag*$prod_pag; $i<(($pag+1)*$prod_pag); $i++) {
+                if(isset($listproduto[$i])){
                 ?>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4" style="margin-bottom: 2%">
                     <div class="card">
-                        <img class="card-img-top" src=<?="uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$produto['img'];?> alt="Card image cap">
+                        <img class="card-img-top" src='<?= "uploads" . DIRECTORY_SEPARATOR . "thumbnail" . DIRECTORY_SEPARATOR . $listproduto[$i]['img'] ?>' alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$produto['id'] ?>" title="View Product"><?= $produto['nome'] ?></a></h4>
-                            <p class="card-text"><?= $produto['descr'] ?></p>
+                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$listproduto[$i]['id'] ?>" title="View Product"><?= substr($listproduto[$i]['nome'], 0, 17); ?></a></h4>
+                            <p class="card-text"><?= mb_strimwidth($listproduto[$i]['descr'], 0, 43, " ..."); ?></p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block">R$ <?= $produto['preco'] ?></p>
+                                    <p class="btn btn-danger btn-block"><?= 'R$ ' . number_format($listproduto[$i]['preco'], 2, ',', '.') ?></p>
                                 </div>
                                 <div class="col">
-                                  <a href="carrinho.php?acao=add&id=<?=$produto['id']?>" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
+                                  <a href="carrinho.php?acao=add&id=<?=$listproduto[$i]['id']?>" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                 </div>
+                                <?php
+                                    if(isset($_SESSION['user'])){
+                                    if($_SESSION['user']['permissao'] == "admin"){
+                                ?>
+                                    <div class="col">
+                                    <a href='<?="atualizar_prod.php?prodid=".$listproduto[$i]['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                    </div>
+                                <?php
+                                    }}
+                                ?>
                             </div>
                         </div>
                     </div>
                 </div>
                 <?php
                   }
+                }
                 ?>
                 <div class="col-12">
                     <nav aria-label="...">
-                        <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <ul class="pagination">
+                        <?php if($pag != 0){
+                                    if(isset($_GET['cat'])){
+                                        $link = "busca.php?pag=$pag&cat=".$_GET['cat'];
+                                    }
+                                    else{
+                                        $link = "busca.php?pag=$pag";
+                                    } ?>
                             <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
+                                <a class="page-link" href='<?="busca.php?pag=$pag"?>'>Anterior</a>
                             </li>
+                        <?php }
+                                for($i = 1; $i <= $pags; $i++){
+                                    if(isset($_GET['cat'])){
+                                        $link = "busca.php?pag=$i&cat=".$_GET['cat'];
+                                    }
+                                    else{
+                                        $link = "busca.php?pag=$i";
+                                    }
+                                    if($i == $pag+1){
+                        ?>
+                            <li class="page-item active">
+                                <a class="page-link" href='<?=$link?>'><?=$i?><span class="sr-only">(current)</span></a>
+                            </li>
+                                <?php
+                                }
+                                else{ ?>
+                            <li class="page-item inactive">
+                                <a class="page-link" href='<?="busca.php?pag=$i"?>'><?=$i?><span class="sr-only">(current)</span></a>
+                            </li>
+
+                        <?php    }
+                                 }
+                                if($pag+1 < $pags){
+                                $prox_pag = $pag+2;
+                                    if(isset($_GET['cat'])){
+                                        $link = "busca.php?pag=$prox_pag&cat=".$_GET['cat'];
+                                    }
+                                    else{
+                                        $link = "busca.php?pag=$prox_pag";
+                                    }  ?>
+                            <li class="page-item">
+                                <a class="page-link" href='<?="busca.php?pag=$prox_pag"?>'>Proxima</a>
+                            </li>
+                            <?php }?>
+
                         </ul>
                     </nav>
                 </div>
