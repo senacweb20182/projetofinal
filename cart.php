@@ -55,19 +55,19 @@ define("CEP", "20080006");
                                 <td><?= $preco ?></td>
                                 <td><input style="width: 50px;" type="number" min="0" name="prod['<?= $id ?>']" value="<?= $qtd ?>"></td>
                                 <td class="text-right"><?= $sub ?></td>
-                                <td class="text-right" colspan="2"><a href="carrinho.php?acao=del&id=1" class="buttoncabe"><i class="fa fa-times"> Remover</i></a></td>
+                                <td class="text-right" colspan="2"><a href="carrinho.php?acao=del&id=<?= $id ?>" class="buttoncabe"><i class="fa fa-times"> Remover</i></a></td>
                                 </tr>
                                 <tr>
                                 <?php
-                            } 
+                            }
                             ?>
                             <td colspan="6">Sub-Total</td>
                             <td class="text-right"><?='R$ ' . number_format($total, 2, ',', '.') ?></td>
                         </tr>
                         <tr>
                             <td colspan="6">Frete</td>
-                            <td class="text-right"><?php 
-                            if(isset($_SESSION['user'])){ 
+                            <td class="text-right"><?php
+                            if(isset($_SESSION['user'])){
                                 echo 'R$ ' . number_format($totalfrete, 2, ',', '.');
                             }
                             else{ ?>

@@ -13,12 +13,17 @@ else{
 if(!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = array();
 }
+If(isset($_GET['id'])){
+  $_POST['id_produto']=$_GET['id'];
+   
+}
 
 if(isset($_GET['acao'])) {
 
     # Adiciona o produto
     if($_GET['acao'] == 'add') {
         $id = intval($_POST['id_produto']);
+
         if(!isset($_SESSION['carrinho'][$id])) {
             $_SESSION['carrinho'][$id] = $quant;
         } else {
