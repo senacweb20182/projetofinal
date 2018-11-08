@@ -192,3 +192,61 @@ BEGIN
 		end if;
 END ;;
 DELIMITER ;
+
+create view usuario_full as select
+	a.id_usuario as id_usuario,
+    a.nome as nome,
+    a.data_nasc as data_nasc,
+    a.cpf as cpf,
+    a.email as email,
+    a.login as login,
+    a.senha as senha,
+    b.celular as celular,
+    d.permissao as permissao,
+    e.rua as rua,
+    e.numero as numero,
+    e.comp as comp,
+    e.cep as cep,
+	f.bairro as bairro,
+    g.cod_cidade as cod_cidade
+from tb_usuarios a join tb_telefones b join tb_usuarios_has_tb_telefones c join tb_perfil d join tb_endereco e join tb_bairros f join tb_cidades g on 
+a.id_usuario = c.tb_usuarios_id_usuario and b.id_tel = c.tb_telefones_id_tel and a.tb_perfil_id_perfil = d.id_perfil and a.id_usuario = e.tb_usuarios_id_usuario and f.id_bairro = e.tb_bairros_id_bairro and g.id_cidade = e.tb_cidades_id_cidade;
+
+DROP PROCEDURE IF EXISTS atualiza_contato;
+DELIMITER ;;
+CREATE PROCEDURE atualiza_contato(pid int(11), pnome varchar(255), pemail varchar(50), plogin varchar (45), psenha varchar(50), pdata date, pcpf varchar(14), 
+								ptel varchar(13), pcep varchar(10), pbairro varchar(45), pcidade varchar(8), prua varchar(50), pnum int(11), pcompl varchar(45))
+BEGIN
+	DECLARE teste bool DEFAULT 0;
+    DECLARE  CONTINUE handler for sqlexception set teste = 1;
+    start transaction;
+		SET @TID = (select tb_telefones_id_tel from tb_usuarios_has_tb_telefones where tb_usuarios_id_usuario = pid);
+        UPDATE tb_telefones set celular = ptel where id_tel = @TID;
+        UPDATE tb_usuarios set 
+            nome = pnome,
+            data_nasc = pdata,
+            email = pemail,
+            login = plogin,
+            senha = psenha,
+            cpf = pcpf
+            where id_usuario = pid;
+        insert into tb_cidades(cod_cidade) select * from (select pcidade ) AS tmp where not exists( select cod_cidade from tb_cidades where cod_cidade = pcidade) LIMIT 1;
+		insert into tb_bairros(bairro) select * from (select pbairro ) AS tmp where not exists( select bairro from tb_bairros where bairro = pbairro) LIMIT 1;
+		SET @CID = (select id_cidade from tb_cidades where cod_cidade = pcidade );
+		SET @BID = (select id_bairro from tb_bairros where bairro = pbairro );
+        UPDATE tb_endereco set
+            cep = pcep,
+            rua = prua,
+            numero = pnum,
+            comp = pcompl,
+            tb_bairros_id_bairro = @BID,
+            tb_cidades_id_cidade = @CID
+            where tb_usuarios_id_usuario = pid;
+        if teste then
+			select false;
+			rollback;
+		else
+			commit;
+		end if;
+END ;;
+DELIMITER ;

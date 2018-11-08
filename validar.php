@@ -26,7 +26,7 @@ function validarTelefone(&$telefone) { //tanto celular como residencial
 }
 
 function validarNome(&$nome) { //apenas letras e espaços simples entre elas
-    preg_match_all('/^[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+(\s+[a-zA-Z\ç\Ç]+)*$/m', $nome, $matches, PREG_SET_ORDER, 0);
+    preg_match_all('/^[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+(\s+[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+)*$/m', $nome, $matches, PREG_SET_ORDER, 0);
     if ($matches) {
         $nome = preg_replace('(\s+)', ' ', $nome); // preg_replace tem que fazer a passagem de parametro por  referencia da variavel dentro da função
         return true;
@@ -138,7 +138,7 @@ function validarCpf(&$cpf) {
             return false;
         }
     }
-    return $matches;
+    return true;
 }
 
 # Função para tratativa de telefone usando JSON
@@ -160,20 +160,30 @@ function validarDDD($ddd) {
         if (!in_array($ddd, $json_ddd['payload'])) {
             return false;
         }
+        else{
+            return true;
+        }
     }
-    return $matches;
+    else{
+        return false;
+    }
 }
 
 ###########################################################################################################
 
 function validarEndereco($campo) {
-    preg_match_all('/^([a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ])+([a-zA-Z0-9]|\.|\s)*$/m', $campo, $matches, PREG_SET_ORDER, 0);
-    return $matches;
+    preg_match_all('/^([a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ])+([a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9]|\.|\s)*$/m', $campo, $matches, PREG_SET_ORDER, 0);
+    if($matches){};
 }
 
 function validarNumeroEndereco($num_endereco) {
     preg_match_all('/^\d+$/m', $num_endereco, $matches, PREG_SET_ORDER, 0);
-    return $matches;
+    if($matches){ 
+        return true;
+    } 
+    else{
+        return false;
+    }
 }
 
 /* function validarCidade($cidade){
@@ -229,12 +239,22 @@ function validarUF($uf, &$cidade) {
 
 function validarTexto($texto){
     preg_match_all('/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9\s()]+$/m', $texto, $matches, PREG_SET_ORDER, 0);
-    return $matches;
+    if($matches){
+        return true;
+    } 
+    else{
+        return false;
+    }
 }
 
 function validarTextoVazio($texto){
     preg_match_all('/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9\s()]*$/m', $texto, $matches, PREG_SET_ORDER, 0);
-    return $matches;
+    if($matches){
+        return true;
+    } 
+    else{
+        return false;
+    }
 }
 
 ?>

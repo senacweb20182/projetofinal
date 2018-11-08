@@ -11,9 +11,11 @@
         <p class="lead">Escolha uma das opções abaixo para ter acesso</p>
         <p class="lead">
           	<a href="index.php" class="btn btn-sm btn-warning">Página inicial</a><br>
+            <a href="atualizar.php" class="btn btn-sm btn-warning">Atualizar Dados</a><br>
             <?php if($_SESSION['user']['permissao'] == "admin"){ ?>
             <a href="cadastro_prod.php" class="btn btn-sm btn-warning">Cadastro de produto</a><br> <?php }?>
-			      <a href="logout.php" class="btn btn-sm btn-warning">Log Out</a><br>
+			      
+            <a href="logout.php" class="btn btn-sm btn-warning">Log Out</a><br>
 		      	
         </p>
       </div>

@@ -8,7 +8,7 @@ require_once 'conexao.php';
 function efetuarLogin($login, $senha){ //já funcional com o banco on-line
     $link = abreConexao();
 
-    $query = "select nome, permissao, cep from perfil_usuario where login = '$login' and senha = '$senha'";
+    $query = "select * from perfil_usuario where login = '$login' and senha = '$senha'";
     $result = mysqli_query($link, $query);
 
     $result = mysqli_fetch_assoc($result);
@@ -199,4 +199,43 @@ function removeProduto($id){
         $query = "delete from tb_marca where id_marca = '$idmarca'";
         mysqli_query($link, $query);
     }
+}
+
+function buscaUsuario($id){
+    $link = abreConexao();
+    $query = "select * from usuario_full where id_usuario = $id";
+    $result = mysqli_fetch_assoc(mysqli_query($link,$query));
+    return $result;
+}
+
+function getCidadeUf($cod){
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://servicodados.ibge.gov.br/api/v1/localidades/municipios/$cod");
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json'));
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    $json_cidade = curl_exec($ch);
+    $json_cidade = json_decode($json_cidade, 1);
+    $arrayResult = array(
+        "cidade" => $json_cidade['nome'],
+        "uf" => $json_cidade['microrregiao']['mesorregiao']['UF']['sigla']
+    );
+    return $arrayResult;
+}
+
+
+function atualizarContato($id, $nome, $email, $login, $senha, $data_nasc, $cpf, $telefone, $cep, $bairro, $cidade, $rua, $numero, $complemento) {
+    $link = abreConexao();
+    $query = "call atualiza_contato('$id', '$nome', '$email', '$login', '$senha', '$data_nasc', '$cpf', '$telefone', '$cep', '$bairro', '$cidade', '$rua', '$numero', '$complemento')";
+    if ($result = mysqli_query($link, $query)) {
+        $result = mysqli_fetch_assoc($result);
+        if(isset($result['FALSE'])){
+            $_SESSION['cond_cli']['atualizacao'] = true;
+            return false;
+        }
+        return true;
+    }
+    return false;
 }
