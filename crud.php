@@ -48,10 +48,10 @@ function salvar($cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $d
 function buscar($prod) {
     $link = abreConexao();
 
-    $query = "select * from tb_produto where nome_produto like '%$prod%'";
+    $query = "select * from produto_view where nome like '%$prod%' or descr like '%$prod%' or marca like '%$prod%'";
     $result = mysqli_query($link, $query);
     $arrayProduto = array();
-    while($produto = mysqli_fetch_row($result)) {
+    while($produto = mysqli_fetch_assoc($result)) {
         array_push($arrayProduto, $produto);
     }
 

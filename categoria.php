@@ -58,11 +58,15 @@
                     <h5 class="card-title"><?= $last['nome']?></h5>
                     <p class="card-text"><?= $last['descr']?></p>
                     <p class="bloc_left_price"><?= 'R$ ' . number_format($last['preco'], 2, ',', '.') ?></p>
+                    <div class="col">
+                      <a href="carrinho.php?acao=add&id=<?=$last['id']?>" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="row">
+
                 <?php
                   for ($i = $pag*$prod_pag; $i<(($pag+1)*$prod_pag); $i++) {
                       if(isset($listproduto[$i])){
@@ -78,17 +82,17 @@
                                     <p class="btn btn-danger btn-block"><?= 'R$ ' . number_format($listproduto[$i]['preco'], 2, ',', '.') ?></p>
                                 </div>
                                 <div class="col">
-                                    <a href="#" class="btn btn-warning btn-block">Add to cart</a>
+                                  <a href="carrinho.php?acao=add&id=<?=$listproduto[$i]['id']?>" class="btn btn-warning btn-block">Adicionar ao carrinho</a>
                                 </div>
                                 <?php
                                     if(isset($_SESSION['user'])){
-                                    if($_SESSION['user']['permissao'] == "admin"){ 
+                                    if($_SESSION['user']['permissao'] == "admin"){
                                 ?>
                                     <div class="col">
                                     <a href='<?="atualizar_prod.php?prodid=".$listproduto[$i]['id']?>' class="btn btn-warning btn-block">Editar</a>
                                     </div>
                                 <?php
-                                    }} 
+                                    }}
                                 ?>
                             </div>
                         </div>
