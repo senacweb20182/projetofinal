@@ -14,10 +14,8 @@
             <div class="row">
                 <div class="jumbotron" align="center">
                     <p>Área Administrativa</p>
-                    <p>Cadastrp de produtos</p>
+                    <p>Edição de produtos</p>
                     <nav class="navbar-light bg-light ">
-                    <a class="navbar-brand" href='cadastro.php'>Cadastro</a>
-                    <a class="navbar-brand" href='consulta.php'>Busca e Atualização</a>
                 </nav>
                 </div>
 
@@ -101,15 +99,22 @@
                             <input type="number" class="form-control" value = '<?=$prod['peso'] ?>'
                             name="peso" id="peso"  required>
                         </div>
+                        
                         <div>
                             <button type="submit" class="btn btn-info">Salvar</button>
-                            
+                        </div>
+                        <br>
+                        <div class="col">
+                            <a href='<?="remover.php?prodid=".$_GET['prodid']?>' class="btn btn-warning">Remover</a>
+                        </div>
+                        <br>
+                        <div>
                             <?php
                                 if(isset($_SESSION['msg'])) {
                                     if($_SESSION['msg']) {
 
                             ?>
-                            <p class="pull-right text-success">Dados atualizados com sucesso</p>
+                                <p class="pull-right text-success">Dados atualizados com sucesso</p>
                             <?php
                                     } else {
                             ?>
@@ -120,8 +125,22 @@
                                 # removem a sessão
                                 unset($_SESSION['msg']);
                             ?>
-
                         </div>
+                        <div>
+                            <?php
+                                if(isset($_SESSION['cond_prod']['remove'])) {
+                                    if($_SESSION['cond_prod']['remove']) {
+
+                            ?>
+                                <p class="pull-right text-danger">Erro na remoção</p>
+                            <?php
+                                    }
+                                }
+                                unset($_SESSION['cond_prod']['remove']);
+                            ?>
+                        </div>
+
+                        
                     </form>
                 </fieldset>
             </div>
