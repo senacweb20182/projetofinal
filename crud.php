@@ -153,3 +153,40 @@ function getSize($id){
         return false;
     }
 }
+
+function removeProduto($id){
+    $link = abreConexao();
+    $query = "select tb_categoria_id_Categoria from tb_produto where id_produto = $id";
+    $result = mysqli_query($link, $query);
+    $idcat = mysqli_fetch_assoc($result)['tb_categoria_id_Categoria'];
+
+    $query = "select tb_marca_id_marca from tb_produto where id_produto = $id";
+    $result = mysqli_query($link, $query);
+    $idmarca = mysqli_fetch_assoc($result)['tb_marca_id_marca'];
+
+
+    $query = "call remove_produto($id)";
+    mysqli_query($link, $query);
+
+    $query = "select * from tb_produto where tb_categoria_id_Categoria = '$idcat'";
+    $result = mysqli_query($link, $query);
+    $arrayIndex = array();
+    while($produto = mysqli_fetch_assoc($result)) {
+        array_push($arrayIndex, $produto);
+    }
+    if(count($arrayIndex) == 0){
+        $query = "delete from tb_categoria where id_categoria = '$idcat'";
+        mysqli_query($link, $query);
+    }
+
+    $query = "select * from tb_categoria where tb_marca_id_marca = '$idmarca'";
+    $result = mysqli_query($link, $query);
+    $arrayIndex = array();
+    while($produto = mysqli_fetch_assoc($result)) {
+        array_push($arrayIndex, $produto);
+    }
+    if(count($arrayIndex) == 0){
+        $query = "delete from tb_marca where id_marca = '$idmarca'";
+        mysqli_query($link, $query);
+    }
+}

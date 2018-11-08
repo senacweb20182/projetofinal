@@ -174,3 +174,21 @@ create view produto_full as select
     d.marca as marca
 from tb_produto a join tb_imagem b join tb_categoria c join tb_marca d on 
 a.id_produto = b.tb_produto_id_produto and c.id_categoria = a.tb_categoria_id_Categoria and d.id_marca = a.tb_marca_id_marca;
+
+DROP PROCEDURE IF EXISTS remove_produto;
+DELIMITER ;;
+CREATE PROCEDURE remove_produto(pid int(11))
+BEGIN
+	DECLARE teste bool DEFAULT 0;
+    DECLARE  CONTINUE handler for sqlexception set teste = 1;
+    start transaction;
+		delete from tb_imagem where tb_produto_id_Produto = pid;
+        delete from tb_produto where id_produto = pid;
+		if teste then
+			select false;
+			rollback;
+		else
+			commit;
+		end if;
+END ;;
+DELIMITER ;

@@ -8,7 +8,7 @@
     <div class="container">
         <div class="page-header">
             <header>
-                <h1>Bem Vindo <?php=$_SESSION['valorcli']['nome'] ?><h1>
+                <h1>Bem Vindo <?php=$_SESSION['valorcli']['nome'] ?></h1>
             </header>
         </div>
         <section>

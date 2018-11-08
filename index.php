@@ -5,6 +5,9 @@
 
 $produtos = produto_index();
 $len = count($produtos);
+$indices = range(0,($len)-1);
+shuffle($indices);
+$i = 0;
 ?>
 
         <!--comeco do carrosel-->
@@ -60,7 +63,7 @@ $len = count($produtos);
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="card">
-                                        <?php $prod = $produtos[rand(0, $len-1)];
+                                        <?php $prod = $produtos[$indices[$i++]];
                                             $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
@@ -91,7 +94,7 @@ $len = count($produtos);
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <?php $prod = $produtos[rand(0, $len-1)];
+                                        <?php $prod = $produtos[$indices[$i++]];
                                             $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
@@ -122,7 +125,7 @@ $len = count($produtos);
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <?php $prod = $produtos[rand(0, $len-1)];
+                                        <?php $prod = $produtos[$indices[$i++]];
                                             $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
@@ -153,7 +156,7 @@ $len = count($produtos);
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <?php $prod = $produtos[rand(0, $len-1)];
+                                        <?php $prod = $produtos[$indices[$i++]];
                                             $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
@@ -201,7 +204,7 @@ $len = count($produtos);
                             <div class="row">
                             <div class="col-sm">
                                     <div class="card">
-                                        <?php $prod = $produtos[rand(0, $len-1)];
+                                        <?php $prod = $produtos[$indices[$i++]];
                                             $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
@@ -232,7 +235,7 @@ $len = count($produtos);
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <?php $prod = $produtos[rand(0, $len-1)];
+                                        <?php $prod = $produtos[$indices[$i++]];
                                             $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
@@ -263,7 +266,7 @@ $len = count($produtos);
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <?php $prod = $produtos[rand(0, $len-1)];
+                                        <?php $prod = $produtos[$indices[$i++]];
                                             $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
@@ -294,7 +297,7 @@ $len = count($produtos);
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <?php $prod = $produtos[rand(0, $len-1)];
+                                        <?php $prod = $produtos[$indices[$i++]];
                                             $src = "uploads".DIRECTORY_SEPARATOR."thumbnail".DIRECTORY_SEPARATOR.$prod['img'];
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
