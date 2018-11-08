@@ -55,7 +55,7 @@ session_start();
 
                     <form action="consulta-prod.php" method="get" class="form-inline my-2 my-lg-0">
                   <div class="input-group input-group-sm">
-                      <input type="text" class="form-control" aria-label="Small" name='produto' aria-describedby="inputGroup-sizing-sm" placeholder="Pesquisar...">
+                      <input type="text" class="form-control" aria-label="Small" name="produto" aria-describedby="inputGroup-sizing-sm" placeholder="Pesquisar...">
                       <div class="input-group-append">
                           <button type="submit" class="btn btn-secondary btn-number">
                               <i class="fa fa-search"></i>
