@@ -1,5 +1,6 @@
 <!DOCTYPE html>
     <?php include 'cabecalho.php';
+        include_once 'crud.php';
 
     if(isset($_SESSION['prod'])) {
         $prod = $_SESSION['prod'];
@@ -66,16 +67,7 @@
                             <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br/><a href="tel:+552125182050">+55 (21) 2518-2050</a></li>
                         </ul>
                     </div>
-                    <div class="reviews_product p-3 mb-2 ">
-                        3 reviews
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        (4/5)
-                        <a class="pull-right" href="#reviews">View all reviews</a>
-                    </div>
+                   
 
                 </div>
             </div>
@@ -100,37 +92,31 @@
             <div class="card border-light mb-3">
                 <div class="card-header bg-primary text-uppercase"><i class="fa fa-comment"></i> Comentarios</div>
                 <div class="card-body">
+                <?php
+                    $arrayComents = getComents($_SESSION['prod']['id_produto']); 
+                    foreach($arrayComents as $value){ ?>
                     <div class="review">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                        <meta itemprop="datePublished" content="01-01-2016">January 01, 2018
-
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        by Paul Smith
+                        <meta itemprop="datePublished" content="01-01-2016"><?=date("d \\d\\e M \\d\\e Y", strtotime($value['data'])).
+                        " por ". ucfirst($value['nome']) ?>
                         <p class="blockquote">
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <p class="mb-0"><?= ucfirst($value['comentario'])?></p>
                         </p>
                         <hr>
                     </div>
-                    <div class="review">
-                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                        <meta itemprop="datePublished" content="01-01-2016">January 01, 2018
-
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        by Paul Smith
-                        <p class="blockquote">
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        </p>
-                        <hr>
-                    </div>
+                <?php 
+                    }?>
+                
                 </div>
+            </div>
+            <div>
+                <form class="form-group" action="comentario.php" method="POST">
+                <label for="comment">Comente:</label>
+                    <textarea name = "coment"class="form-control" rows="5" id="comment">
+
+                    </textarea>
+                    <button id="mybtn" type="submit" class="btn btn-warning">Salvar</button>
+                </form>
             </div>
         </div>
     </div>

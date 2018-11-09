@@ -53,7 +53,7 @@ define("CEP", "20080006");
                                 <tr class="text-center">
                                 <td colspan="2"><?= $nome ?></td>
                                 <td><?= $preco ?></td>
-                                <td><input style="width: 50px;" type="number" min="0" name="prod['<?= $id ?>']" value="<?= $qtd ?>"></td>
+                                <td><?= $qtd ?></td>
                                 <td class="text-right"><?= $sub ?></td>
                                 <td class="text-right" colspan="2"><a href="carrinho.php?acao=del&id=<?= $id ?>" class="buttoncabe"><i class="fa fa-times"> Remover</i></a></td>
                                 </tr>
