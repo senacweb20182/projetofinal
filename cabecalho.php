@@ -1,5 +1,12 @@
 <?php
 session_start();
+if(isset($_SESSION['carrinho'])){
+    $qnt_carrinho = count($_SESSION['carrinho']);
+}
+else{
+    $qnt_carrinho = 0;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -64,7 +71,7 @@ session_start();
                   </div>
                   <a class="btn btn-warning btn-sm ml-3" href="cart.php">
                       <i class="fa fa-shopping-cart"></i> Carrinho
-                      <span class="badge badge-light">0</span>
+                      <span class="badge badge-light"><?= $qnt_carrinho ?></span>
                   </a>
               </form>
                   </div>
