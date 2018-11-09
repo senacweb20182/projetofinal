@@ -85,6 +85,7 @@ define("CEP", "20080006");
                         ?>
                     </tbody>
                 </table>
+                <?php $_SESSION['frete'] = $totalfrete; ?>
             </div>
         </div>
         <div class="col mb-2">

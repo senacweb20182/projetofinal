@@ -21,7 +21,7 @@ foreach ($_SESSION['carrinho'] as $id => $qtd){
 
 
 $data['itemId'.$i] = $ln['id_produto'];
-$data['itemDescription'.$i] = $ln['nome_produto'];
+$data['itemDescription'.$i] = ucfirst($ln['nome_produto']);
 $data['itemAmount'.$i] = $ln['preco_venda'].'.00';
 $data['itemQuantity'.$i] = $qtd;
 $data['itemWeight'.$i] = '1000';
@@ -31,9 +31,9 @@ $data['itemWeight'.$i] = '1000';
 #$data['itemQuantity2'] = '2';
 #$data['itemWeight2'] = '750';
 
-$i+=1;
+$i++;
 }
-
+$data['extraAmount'] = $_SESSION['frete'].'.00';
 
 
 $data['reference'] = 'REF1234';
