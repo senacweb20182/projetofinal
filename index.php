@@ -82,7 +82,7 @@ $i = 0;
                                                     if($_SESSION['user']['permissao'] == "admin"){
                                                 ?>
                                                         <div class="col">
-                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-warning btn-block">Editar</a>
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-info btn-block text-light">Editar</a>
                                                         </div>
                                                 <?php
                                                     }
@@ -113,7 +113,7 @@ $i = 0;
                                                     if($_SESSION['user']['permissao'] == "admin"){
                                                 ?>
                                                         <div class="col">
-                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-warning btn-block">Editar</a>
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-info btn-block text-light">Editar</a>
                                                         </div>
                                                 <?php
                                                     }
@@ -144,7 +144,7 @@ $i = 0;
                                                     if($_SESSION['user']['permissao'] == "admin"){
                                                 ?>
                                                         <div class="col">
-                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-warning btn-block">Editar</a>
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-info btn-block text-light">Editar</a>
                                                         </div>
                                                 <?php
                                                     }
@@ -175,7 +175,7 @@ $i = 0;
                                                     if($_SESSION['user']['permissao'] == "admin"){
                                                 ?>
                                                         <div class="col">
-                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-warning btn-block">Editar</a>
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-info btn-block text-light">Editar</a>
                                                         </div>
                                                 <?php
                                                     }
@@ -223,7 +223,7 @@ $i = 0;
                                                     if($_SESSION['user']['permissao'] == "admin"){
                                                 ?>
                                                         <div class="col">
-                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-warning btn-block">Editar</a>
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-info btn-block text-light">Editar</a>
                                                         </div>
                                                 <?php
                                                     }
@@ -254,7 +254,7 @@ $i = 0;
                                                     if($_SESSION['user']['permissao'] == "admin"){
                                                 ?>
                                                         <div class="col">
-                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-warning btn-block">Editar</a>
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-info btn-block text-light">Editar</a>
                                                         </div>
                                                 <?php
                                                     }
@@ -285,7 +285,7 @@ $i = 0;
                                                     if($_SESSION['user']['permissao'] == "admin"){
                                                 ?>
                                                         <div class="col">
-                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-warning btn-block">Editar</a>
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-info btn-block text-light">Editar</a>
                                                         </div>
                                                 <?php
                                                     }
@@ -316,7 +316,7 @@ $i = 0;
                                                     if($_SESSION['user']['permissao'] == "admin"){
                                                 ?>
                                                         <div class="col">
-                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-warning btn-block">Editar</a>
+                                                            <a href='<?="atualizar_prod.php?prodid=".$prod['id']?>' class="btn mt-1 btn-info btn-info btn-block text-light">Editar</a>
                                                         </div>
                                                 <?php
                                                     }
