@@ -5,8 +5,132 @@
 
 * {
     font-family: 'Roboto', sans-serif;
-    
-    
+}
+
+body {
+    background-image: linear-gradient(#ADA996, #F2F2F2, #DBDBDB, #EAEAEA);
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}
+.bloc_left_price {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+.category_block li:hover {
+    background-color: #0000FF;
+}
+.category_block li:hover a {
+    color: #0000FF;
+}
+/*pesquisa*/
+.category_block li a {
+    color: #0000FF;
+}
+.add_to_cart_block .price {
+    color: #c01508;
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+    margin-bottom: 0;
+}
+.add_to_cart_block .price_discounted {
+    color: #343a40;
+    text-align: center;
+    text-decoration: line-through;
+    font-size: 140%;
+}
+.product_rassurance {
+    padding: 10px;
+    margin-top: 15px;
+    background: #ffffff;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+.product_rassurance .list-inline {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+.product_rassurance .list-inline li:hover {
+    color: #0000FF;
+}
+.reviews_product .fa-star {
+    color: gold;
+}
+.pagination {
+    margin-top: 20px;
+}
+footer {
+    background: #343a40;
+    padding: 40px;
+}
+footer a {
+    color: #f8f9fa!important
+}
+
+.jumbotron{
+background-image: url("../img/banner_1.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+background-color: #0000FF;
+ color: #00BFFF;
+
+}
+
+.btn-danger:hover {
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+.btn-danger{
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+.btn-light:hover {
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+.btn-light{
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+.bg-primary {
+    background-color: #fbc820!important;
+}
+
+
+
+.titulo {
+    color: black;
+}
+
+a, a:hover, a:link, a:visited, a:active {
+    text-decoration: none;
+    color: #000;
+}
+
+.page-item.active .page-link {
+    background-color: #fbc820;
+    border-color: #fbc820;
+    color: black;
+}
+/*
+** Style Simple Ecommerce Theme for Bootstrap 4
+** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
+*/
+
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -76,7 +200,7 @@ background-repeat: no-repeat;
 background-size: 100%;
 background-color: #0000FF;
  color: #00BFFF;
-    
+
 }
 
 .btn-danger:hover {
