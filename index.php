@@ -68,7 +68,7 @@ $i = 0;
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$prod['id'] ?>" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
                                             <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
@@ -99,7 +99,7 @@ $i = 0;
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$prod['id'] ?>" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
                                             <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
@@ -130,7 +130,7 @@ $i = 0;
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$prod['id'] ?>" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
                                             <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
@@ -161,7 +161,7 @@ $i = 0;
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$prod['id'] ?>" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
                                             <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
@@ -209,7 +209,7 @@ $i = 0;
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$prod['id'] ?>" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
                                             <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
@@ -240,7 +240,7 @@ $i = 0;
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$prod['id'] ?>" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
                                             <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
@@ -271,7 +271,7 @@ $i = 0;
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$prod['id'] ?>" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
                                             <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">
@@ -302,7 +302,7 @@ $i = 0;
                                         ?>
                                         <img class="card-img-top" src='<?= $src ?>' alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="product.php" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
+                                            <h4 class="card-title"><a href="buscaidprod.php?id=<?=$prod['id'] ?>" title="View Product"><?= substr($prod['nome'], 0, 17);?></a></h4>
                                             <p class="card-text"><?= mb_strimwidth($prod['descr'], 0, 43, " ...");?></p>
                                             <div class="row">
                                                 <div class="col">

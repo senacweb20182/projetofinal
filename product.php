@@ -19,9 +19,9 @@
         <div class="col-12 col-lg-6">
             <div class="card bg-light mb-3 pb-1">
                 <div class="card-body">
-                  <a href="" data-toggle="modal" data-target="#productModal">
-                      <img id="product_photo" data-zoom-image="uploads\<?=$prod['img']?>" width="800" height="800" class="img-fluid" src="uploads\img\<?=$prod['img']?>" />
-                  </a>
+
+                      <img id="product_photo" <?php "data-zoom-image=uploads". DIRECTORY_SEPARATOR .$prod['img']?> width="800" height="800" class="img-fluid"  src="uploads/img/<?=$prod['img']?>"/>
+
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
                             <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br/><a href="tel:+552125182050">+55 (21) 2518-2050</a></li>
                         </ul>
                     </div>
-                   
+
 
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 <div class="card-header bg-primary text-uppercase"><i class="fa fa-comment"></i> Comentarios</div>
                 <div class="card-body">
                 <?php
-                    $arrayComents = getComents($_SESSION['prod']['id_produto']); 
+                    $arrayComents = getComents($_SESSION['prod']['id_produto']);
                     foreach($arrayComents as $value){ ?>
                     <div class="review">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
@@ -104,9 +104,9 @@
                         </p>
                         <hr>
                     </div>
-                <?php 
+                <?php
                     }?>
-                
+
                 </div>
             </div>
             <div>
