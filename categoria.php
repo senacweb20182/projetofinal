@@ -32,6 +32,13 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item" aria-current="page">Categoria</li>
+                    <?php
+                    if(isset($_GET['cat'])){
+                    ?>
+                    <li class="breadcrumb-item" aria-current="page"><?= $_GET['cat'] ?></li>
+                    <?php
+                    }
+                    ?>
                 </ol>
             </nav>
         </div>
@@ -43,11 +50,12 @@
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-uppercase"><i class="fa fa-list"></i> Categoria</div>
                 <ul class="list-group">
+                    <li class="list-group-item list-group-item-action"><a href='categoria.php'>Todos</a></li>
                 <?php
                     foreach($arrayCat as $cat){?>
                     <li class="list-group-item list-group-item-action"><a href='categoria.php?cat=<?=$cat?>'><?=$cat?></a></li>
                     <?php } ?>
-                    <li class="list-group-item list-group-item-action"><a href='categoria.php'>Todos</a></li>
+                    
                 </ul>
             </div>
 
