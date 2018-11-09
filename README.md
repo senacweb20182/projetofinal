@@ -5,6 +5,18 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ma
 
 <a href="https://www.google.com.br">Web Tecnologia</a>
 
+# Instrutor do Projeto
+
+<table align="center">
+  <tr>
+    <td>
+      <img src="https://avatars0.githubusercontent.com/u/9484636?s=460&v=4" width="100px;"/><br />
+      <sub>
+      <a href ="https://github.com/lpjunior">Luis Paulo Lessa</a>
+      </sub>
+    </td>
+ </table>
+
 
 # Equipes
 
