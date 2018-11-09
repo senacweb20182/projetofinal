@@ -86,7 +86,7 @@ define("CEP", "20080006");
                     </tbody>
                 </table>
                 <?php 
-                    if(isset($_SESSION['frete'])) $_SESSION['frete'] = $totalfrete; 
+                    if(isset($totalfrete)) $_SESSION['frete'] = $totalfrete; 
                 ?>
             </div>
         </div>
@@ -96,8 +96,20 @@ define("CEP", "20080006");
                   <a href="index.php" class="btn btn-block btn-light">Continuar comprando</a>
               </div>
               <div class="col-sm-12 col-md-6 text-right">
+              <?php
+                if(!isset($_SESSION['user'])){
+                    $string = "Loge para executar a compra";
+                }
+                else if($qnt_carrinho == 0){
+                    $string = "Carrinho vazio!";
+                }
+                else{
+                    $string = "Finalizar a compra";
+                }
+              ?>
                 <form action="checkout.php" method="post">
-                  <button type="submit" class="btn btn-block btn-warning ">Finalizar o pedido</button>
+                  <button type="submit" class="btn btn-block btn-warning " <?php if(!isset($_SESSION['user']) or $qnt_carrinho == 0) echo "disabled" ?>><?= $string?></button>
+                </form>
               </div>
             </div>
         </div>
