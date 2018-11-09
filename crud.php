@@ -114,6 +114,22 @@ function produto_index_cat($cat){
 
 }
 
+function getCategoria(){
+    $link = abreConexao();
+
+    $query = "select nome_cat from tb_categoria";
+    $result = mysqli_query($link, $query);
+    $arrayCat = array();
+    while($categoria = mysqli_fetch_assoc($result)) {
+        array_push($arrayCat, $categoria);
+    }
+    foreach($arrayCat as $key => $value){
+        $arrayCat[$key] = ucfirst($value['nome_cat']);
+    }
+    array_multisort($arrayCat, SORT_ASC, SORT_STRING);
+    return $arrayCat;
+}
+
 function atualizarProduto($id, $cod, $prod, $quant, $price, $desc, $rev, $alt, $larg, $comp, $diam, $peso, $marca, $cat, $foto) {
     $link = abreConexao();
     $query = "call atualiza_produto('$id','$cod','$prod','$quant', '$price', '$desc', '$rev', '$alt', '$larg', '$comp', '$diam', '$peso', '$marca', '$cat', '$foto')";
@@ -134,22 +150,6 @@ function atualizarProduto($id, $cod, $prod, $quant, $price, $desc, $rev, $alt, $
         return true;
     }
     return false;
-}
-
-function getCategoria(){
-    $link = abreConexao();
-
-    $query = "select nome_cat from tb_categoria";
-    $result = mysqli_query($link, $query);
-    $arrayCat = array();
-    while($categoria = mysqli_fetch_assoc($result)) {
-        array_push($arrayCat, $categoria);
-    }
-    foreach($arrayCat as $key => $value){
-        $arrayCat[$key] = ucfirst($value['nome_cat']);
-    }
-    array_multisort($arrayCat, SORT_ASC, SORT_STRING);
-    return $arrayCat;
 }
 
 function getSize($id){
@@ -238,4 +238,29 @@ function atualizarContato($id, $nome, $email, $login, $senha, $data_nasc, $cpf, 
         return true;
     }
     return false;
+}
+
+function Coment($uid, $pid, $coment, $data){
+    $link = abreConexao();
+    $query = "call insere_comentario('$uid','$pid','$coment', '$data')";
+    if ($result = mysqli_query($link, $query)) {
+        $result = mysqli_fetch_assoc($result);
+        if(isset($result['FALSE'])){
+            $_SESSION['cond_cli']['atualizacao'] = true;
+            return false;
+        }
+        return true;
+    }
+    return false;
+}
+
+function getComents($id){
+    $link = abreConexao();
+    $query = "select nome, comentario, data from coment where id_produto = $id";
+    $result = mysqli_query($link, $query);
+    $arrayComent = array();
+    while($produto = mysqli_fetch_assoc($result)) {
+        array_push($arrayComent, $produto);
+    }
+    return $arrayComent;
 }

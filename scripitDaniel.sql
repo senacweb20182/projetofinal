@@ -250,3 +250,30 @@ BEGIN
 		end if;
 END ;;
 DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS insere_comentario;
+DELIMITER ;;
+CREATE PROCEDURE insere_comentario(puid int(11), pdid int(11), pcoment text) 
+BEGIN
+	DECLARE teste bool DEFAULT 0;
+    DECLARE  CONTINUE handler for sqlexception set teste = 1;
+    start transaction;
+        insert into preview (comentario) values (pcoment);
+        set @CID = (select id from preview where comentario = pcoment);
+        insert into preview_has_tb_produto(preview_id, tb_produto_id_Produto, tb_usuarios_id_usuario) values (@CID, pdid, puid);
+        if teste then
+			select false;
+			rollback;
+		else
+			commit;
+		end if;
+END ;;
+DELIMITER ;
+
+create view coment as select
+    a.comentario as comentario,
+    b.nome as nome,
+    c.id_produto as id_produto
+    from tb_usuarios b join preview a join tb_produto c join preview_has_tb_produto d on 
+    b.id_usuario = d.tb_usuarios_id_usuario and a.id = d.preview_id and c.id_produto = d.tb_produto_id_Produto;
