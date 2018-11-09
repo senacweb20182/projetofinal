@@ -97,7 +97,7 @@
                                     if($_SESSION['user']['permissao'] == "admin"){
                                 ?>
                                     <div class="col">
-                                    <a href='<?="atualizar_prod.php?prodid=".$listproduto[$i]['id']?>' class="btn btn-warning btn-block">Editar</a>
+                                    <a href='<?="atualizar_prod.php?prodid=".$listproduto[$i]['id']?>' class="btn btn-warning mt-1 btn-block">Editar</a>
                                     </div>
                                 <?php
                                     }}
