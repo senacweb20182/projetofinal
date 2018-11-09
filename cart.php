@@ -89,12 +89,13 @@ define("CEP", "20080006");
         </div>
         <div class="col mb-2">
             <div class="row">
-                <div class="col-sm-12  col-md-6">
-                    <button class="btn btn-block btn-light">Continuar comprando</button>
-                </div>
-                <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-block btn-warning ">Finalizar o pedido</button>
-                </div>
+              <div class="col-sm-12  col-md-6">
+                  <a href="index.php" class="btn btn-block btn-light">Continuar comprando</a>
+              </div>
+              <div class="col-sm-12 col-md-6 text-right">
+                <form action="checkout.php" method="post">
+                  <button type="submit" class="btn btn-block btn-warning ">Finalizar o pedido</button>
+              </div>
             </div>
         </div>
     </div>
